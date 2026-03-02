@@ -1,0 +1,47 @@
+export const CHESS_QUOTES = [
+  { quote: "Chess is the struggle against the error.", author: "Johannes Zukertort" },
+  { quote: "Every chess master was once a beginner.", author: "Irving Chernev" },
+  { quote: "When you see a good move, look for a better one.", author: "Emanuel Lasker" },
+  { quote: "Nobody ever won a chess game by resigning.", author: "Savielly Tartakower" },
+  { quote: "The hardest game to win is a won game.", author: "Emanuel Lasker" },
+  { quote: "Pawns are the soul of the game.", author: "François-André Danican Philidor" },
+  { quote: "Chess is life in miniature.", author: "Garry Kasparov" },
+  { quote: "A bad plan is better than no plan at all.", author: "Mikhail Chigorin" },
+  { quote: "Chess makes men wiser and clear-sighted.", author: "Vladimir Putin" },
+  { quote: "Chess holds its master in its own bonds, shackling the mind and brain so that the inner freedom of the very strongest must suffer.", author: "Albert Einstein" },
+  { quote: "Tactics is knowing what to do when there is something to do; strategy is knowing what to do when there is nothing to do.", author: "Savielly Tartakower" },
+  { quote: "The pin is mightier than the sword.", author: "Fred Reinfeld" },
+  { quote: "Chess is 99% tactics.", author: "Richard Teichmann" },
+  { quote: "Some part of a mistake is always correct.", author: "Savielly Tartakower" },
+  { quote: "One bad move nullifies forty good ones.", author: "Bernhard Horwitz" },
+  { quote: "Play the opening like a book, the middlegame like a magician, and the endgame like a machine.", author: "Rudolf Spielmann" },
+  { quote: "Even a poor plan is better than no plan at all.", author: "Mikhail Chigorin" },
+  { quote: "Chess is rarely a game of ideal moves. Almost always, a player faces a series of difficult consequences whichever move he makes.", author: "David Shenk" },
+  { quote: "There is no such thing as a 'friendly' game of chess.", author: "Unknown" },
+  { quote: "Chess is beautiful enough to waste your life for.", author: "Hans Ree" },
+  { quote: "I don't believe in psychology. I believe in good moves.", author: "Bobby Fischer" },
+  { quote: "The blunders are all there on the board, waiting to be made.", author: "Savielly Tartakower" },
+  { quote: "In chess, as it is played by masters, chance is practically eliminated.", author: "Emanuel Lasker" },
+  { quote: "To play for a draw, at any rate with White, is to some degree a crime against chess.", author: "Mikhail Tal" },
+  { quote: "Of chess it has been said that life is not long enough for it, but that is the fault of life, not chess.", author: "William Napier" },
+  { quote: "Chess is everything: art, science, and sport.", author: "Anatoly Karpov" },
+  { quote: "The beauty of a move lies not in its appearance but in the thought behind it.", author: "Aron Nimzowitsch" },
+  { quote: "Chess is above all, a fight.", author: "Emanuel Lasker" },
+  { quote: "A strong memory, concentration, imagination, and a strong will is required to become a great chess player.", author: "Bobby Fischer" },
+  { quote: "You may learn much more from a game you lose than from a game you win.", author: "José Raúl Capablanca" },
+  { quote: "If you want to get good, you have to play for a long time.", author: "Hikaru Nakamura" },
+  { quote: "Chess helps you to concentrate, improve your logic. It teaches you to play by the rules and take responsibility for your actions, how to problem solve in an uncertain environment.", author: "Garry Kasparov" },
+  { quote: "We must make sure that chess will not be like a dead language, very interesting, but for a very small group.", author: "Vladimir Kramnik" },
+  { quote: "A win by an unsound combination, however showy, fills me with artistic horror.", author: "Wilhelm Steinitz" },
+  { quote: "In chess, just as in life, today's bliss may be tomorrow's poison.", author: "Assiac" },
+  { quote: "Chess tests the mind, not the memory.", author: "Unknown" },
+  { quote: "Without error there can be no brilliancy.", author: "Emanuel Lasker" },
+  { quote: "You cannot play at chess if you are kind-hearted.", author: "French Proverb" },
+  { quote: "Half the variations which are calculated in a tournament game turn out to be completely superfluous.", author: "Alexander Kotov" },
+  { quote: "There are two types of sacrifices: correct ones and mine.", author: "Mikhail Tal" }
+];
+
+export function getDailyQuote() {
+  const dayOfYear = Math.floor((Date.now() - new Date(new Date().getFullYear(), 0, 0).getTime()) / 86400000);
+  return CHESS_QUOTES[dayOfYear % CHESS_QUOTES.length];
+}

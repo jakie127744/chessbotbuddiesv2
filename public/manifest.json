@@ -1,0 +1,22 @@
+{
+  "name": "ChessBot Buddies",
+  "short_name": "ChessBuddies",
+  "description": "Fun chess trainer for kids with adaptable AI bots.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0f1729",
+  "theme_color": "#0f1729",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "/mascot_profile.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/mascot_profile.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

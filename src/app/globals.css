@@ -1,0 +1,194 @@
+@import "tailwindcss";
+@source "../**";
+
+@theme {
+  /* Fonts - Kid-friendly fonts */
+  --font-sans: var(--font-nunito), sans-serif;
+  --font-display: var(--font-baloo), sans-serif;
+
+  /* ========================================
+      Jungle Green Palette Definition
+     ======================================== */
+  --color-jungle-50: #e5fff8;
+  --color-jungle-100: #ccfff1;
+  --color-jungle-200: #99ffe2;
+  --color-jungle-300: #66ffd4;
+  --color-jungle-400: #33ffc5;
+  --color-jungle-500: #00ffb7;
+  --color-jungle-600: #00cc92;
+  --color-jungle-700: #00996e;
+  --color-jungle-800: #006649;
+  --color-jungle-900: #003325;
+  --color-jungle-950: #00241a;
+
+  /* Aliases to match tailwind.config variables (keep both for compatibility) */
+  --color-jungle-green-50: var(--color-jungle-50);
+  --color-jungle-green-100: var(--color-jungle-100);
+  --color-jungle-green-200: var(--color-jungle-200);
+  --color-jungle-green-300: var(--color-jungle-300);
+  --color-jungle-green-400: var(--color-jungle-400);
+  --color-jungle-green-500: var(--color-jungle-500);
+  --color-jungle-green-600: var(--color-jungle-600);
+  --color-jungle-green-700: var(--color-jungle-700);
+  --color-jungle-green-800: var(--color-jungle-800);
+  --color-jungle-green-900: var(--color-jungle-900);
+  --color-jungle-green-950: var(--color-jungle-950);
+
+  /* Backgrounds mapped to Jungle */
+  --color-bg-primary: var(--color-jungle-950);
+  --color-bg-secondary: var(--color-jungle-900);
+  --color-bg-tertiary: var(--color-jungle-800);
+  --color-bg-elevated: var(--color-jungle-700);
+
+  /* Borders mapped to Jungle */
+  --color-border: var(--color-jungle-800);
+  --color-border-light: var(--color-jungle-700);
+
+  /* Core Accents mapped to Jungle */
+  --color-primary: var(--color-jungle-500); 
+  --color-primary-hover: var(--color-jungle-400);
+  --color-primary-muted: var(--color-jungle-800);
+
+  /* Semantic / Secondary mapped to Jungle */
+  --color-accent-yellow: var(--color-jungle-200);
+  --color-accent-mint: var(--color-jungle-300);
+  --color-accent-coral: var(--color-jungle-500);
+  --color-accent-purple: var(--color-jungle-700);
+  --color-accent-orange: var(--color-jungle-400);
+  --color-accent-slate: var(--color-jungle-600);
+  --color-accent-slate-hover: var(--color-jungle-500);
+
+  /* Semantic Status */
+  --color-success: var(--color-jungle-500);
+  --color-warning: var(--color-jungle-300);
+  --color-danger: #ff6b6b; /* Red kept for safety/errors */
+  --color-info: var(--color-jungle-400);
+
+  /* Text Colors mapped for high contrast on dark green */
+  --color-text-primary: var(--color-jungle-50);
+  --color-text-secondary: var(--color-jungle-100);
+  --color-text-muted: var(--color-jungle-300);
+
+  /* Board & FX - PROTECTED (Kept as requested) */
+  --color-board-dark: #3a4763;
+  --color-board-light: #e8ecf5;
+  --color-glow: rgba(0, 255, 183, 0.25);
+  --color-board-shadow: 0 10px 30px rgba(0, 36, 26, 0.4);
+
+  /* Border Radius */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --radius-xl: 20px;
+}
+
+/* Default Dark Theme */
+:root {
+  --background: var(--color-jungle-950);
+  --foreground: var(--color-jungle-50);
+  --surface: var(--color-jungle-900);
+  --surface-highlight: var(--color-jungle-800);
+  --surface-elevated: var(--color-jungle-700);
+  --border: var(--color-jungle-800);
+  --text-primary: var(--color-jungle-50);
+  --text-secondary: var(--color-jungle-100);
+  --text-tertiary: var(--color-jungle-300);
+  --primary: var(--color-jungle-500);
+  --primary-hover: var(--color-jungle-400);
+}
+
+/* Light Mode Theme - Inverted Jungle Palette */
+.light {
+  --background: var(--color-jungle-50);
+  --foreground: var(--color-jungle-950);
+  --surface: #ffffff;
+  --surface-highlight: var(--color-jungle-100);
+  --surface-elevated: #fdfefe;
+  --border: var(--color-jungle-200);
+  --text-primary: var(--color-jungle-950);
+  --text-secondary: var(--color-jungle-800);
+  --text-tertiary: var(--color-jungle-600);
+  
+  --color-bg-primary: var(--color-jungle-50);
+  --color-bg-secondary: #ffffff;
+  --color-border: var(--color-jungle-200);
+}
+
+@layer base {
+  body {
+    background: var(--background);
+    color: var(--text-secondary);
+    min-height: 100vh;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  ::selection {
+    background-color: var(--color-primary);
+    color: var(--color-jungle-950);
+  }
+
+  button {
+    appearance: none;
+    background: var(--color-primary);
+    color: var(--color-jungle-950);
+    border: 1px solid var(--color-jungle-600);
+    border-radius: var(--radius-md);
+    padding: 0.65rem 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  button:hover:not(:disabled) {
+    background: var(--color-primary-hover);
+    box-shadow: 0 0 20px rgba(0, 255, 183, 0.4);
+    transform: translateY(-1px);
+  }
+}
+
+@layer utilities {
+  .custom-scrollbar::-webkit-scrollbar { width: 6px; height: 6px; }
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: var(--color-jungle-700);
+    border-radius: 3px;
+  }
+
+  .glass {
+    background: rgba(0, 36, 26, 0.7);
+    backdrop-filter: blur(12px);
+    border: 1px solid var(--color-jungle-700);
+  }
+
+  .glow-primary { box-shadow: 0 0 20px var(--color-jungle-500); }
+  
+  .card-dark {
+    background: var(--color-bg-secondary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+  }
+
+  @keyframes bounce-slow {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+  }
+  .animate-bounce-slow { animation: bounce-slow 2s ease-in-out infinite; }
+}
+
+@layer components {
+  .btn-primary {
+    background: linear-gradient(135deg, var(--color-jungle-500) 0%, var(--color-jungle-400) 100%);
+    color: var(--color-jungle-950);
+    box-shadow: 0 8px 20px rgba(0, 255, 183, 0.3);
+  }
+
+  .btn-secondary {
+    background: var(--color-bg-tertiary);
+    color: var(--color-text-primary);
+    border: 1px solid var(--color-jungle-600);
+  }
+
+  .btn-danger {
+    background: var(--color-danger);
+    color: white;
+  }
+}

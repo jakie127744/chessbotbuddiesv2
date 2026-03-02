@@ -1,0 +1,1064 @@
+[
+  {
+    "id": "5SEgQ",
+    "fen": "4rk2/p1p3pp/8/1p2q3/1P1p4/1Q1P4/P4PPP/R1B2K2 w - - 0 22",
+    "moves": [
+      "c1b2",
+      "e5e2",
+      "f1g1",
+      "e2e1",
+      "a1e1",
+      "e8e1"
+    ],
+    "rating": 1053,
+    "themes": [
+      "backRankMate",
+      "endgame",
+      "long",
+      "mate",
+      "mateIn3",
+      "sacrifice"
+    ],
+    "popularity": 85,
+    "primaryTheme": "backRankMate"
+  },
+  {
+    "id": "5SFKD",
+    "fen": "3r4/p4ppk/4p3/1p2P3/8/2r5/2P2PPP/4Q1K1 w - - 0 33",
+    "moves": [
+      "e1c3",
+      "d8d1",
+      "c3e1",
+      "d1e1"
+    ],
+    "rating": 500,
+    "themes": [
+      "backRankMate",
+      "endgame",
+      "mate",
+      "mateIn2",
+      "queenRookEndgame",
+      "short"
+    ],
+    "popularity": 100,
+    "primaryTheme": "backRankMate"
+  },
+  {
+    "id": "5SGPV",
+    "fen": "5rk1/6pp/Qp2pn2/1N2Np2/1b3P2/1P6/P2q2PP/B1r2R1K w - - 6 23",
+    "moves": [
+      "f1c1",
+      "d2c1"
+    ],
+    "rating": 777,
+    "themes": [
+      "backRankMate",
+      "mate",
+      "mateIn1",
+      "middlegame",
+      "oneMove"
+    ],
+    "popularity": 77,
+    "primaryTheme": "backRankMate"
+  },
+  {
+    "id": "5SHYT",
+    "fen": "r1nR4/1NP3pk/2q4p/p7/P3p3/3Q4/1P3PPP/6K1 w - - 0 31",
+    "moves": [
+      "d3g3",
+      "c6c1",
+      "d8d1",
+      "c1d1"
+    ],
+    "rating": 448,
+    "themes": [
+      "backRankMate",
+      "endgame",
+      "mate",
+      "mateIn2",
+      "short"
+    ],
+    "popularity": 97,
+    "primaryTheme": "backRankMate"
+  },
+  {
+    "id": "5ScB2",
+    "fen": "3r2k1/pp3ppp/1b6/5n2/7P/1Q3RP1/P2r1P2/6K1 b - - 8 29",
+    "moves": [
+      "f5d4",
+      "b3f7",
+      "g8h8",
+      "f7f8",
+      "d8f8",
+      "f3f8"
+    ],
+    "rating": 919,
+    "themes": [
+      "backRankMate",
+      "endgame",
+      "long",
+      "mate",
+      "mateIn3",
+      "sacrifice"
+    ],
+    "popularity": 100,
+    "primaryTheme": "backRankMate"
+  },
+  {
+    "id": "5SdKr",
+    "fen": "7k/1p4pp/p1p2r1q/P7/1P1P4/5R2/6PP/4R1K1 b - - 1 30",
+    "moves": [
+      "f6f3",
+      "e1e8",
+      "f3f8",
+      "e8f8"
+    ],
+    "rating": 446,
+    "themes": [
+      "backRankMate",
+      "endgame",
+      "mate",
+      "mateIn2",
+      "queenRookEndgame",
+      "short"
+    ],
+    "popularity": 86,
+    "primaryTheme": "backRankMate"
+  },
+  {
+    "id": "5Sdeg",
+    "fen": "4r1k1/2p2ppp/2q1r3/B3RQ2/1Pp3P1/2Pp3P/P7/5RK1 b - - 0 36",
+    "moves": [
+      "e6e5",
+      "f5f7",
+      "g8h8",
+      "f7f8",
+      "e8f8",
+      "f1f8"
+    ],
+    "rating": 1058,
+    "themes": [
+      "backRankMate",
+      "endgame",
+      "long",
+      "mate",
+      "mateIn3",
+      "sacrifice"
+    ],
+    "popularity": 94,
+    "primaryTheme": "backRankMate"
+  },
+  {
+    "id": "5Svro",
+    "fen": "r2r2k1/6pp/pR2pn2/4p3/N1PqP3/8/Q4PPP/1R4K1 w - - 2 25",
+    "moves": [
+      "c4c5",
+      "d4d1",
+      "b1d1",
+      "d8d1"
+    ],
+    "rating": 938,
+    "themes": [
+      "backRankMate",
+      "mate",
+      "mateIn2",
+      "middlegame",
+      "sacrifice",
+      "short"
+    ],
+    "popularity": 60,
+    "primaryTheme": "backRankMate"
+  },
+  {
+    "id": "5SwGY",
+    "fen": "3rB2k/p1p1r1pp/1p1p4/6q1/8/P1N2Q2/1PP3PP/5RK1 b - - 2 22",
+    "moves": [
+      "d8e8",
+      "f3f8",
+      "e8f8",
+      "f1f8"
+    ],
+    "rating": 507,
+    "themes": [
+      "backRankMate",
+      "endgame",
+      "mate",
+      "mateIn2",
+      "sacrifice",
+      "short"
+    ],
+    "popularity": 95,
+    "primaryTheme": "backRankMate"
+  },
+  {
+    "id": "5Syy6",
+    "fen": "4r2k/pp4pp/2p2n2/5b2/2B2q2/2N1P2P/PPP1Q1P1/3R3K b - - 0 23",
+    "moves": [
+      "e8e3",
+      "d1d8",
+      "f6e8",
+      "d8e8",
+      "e3e8",
+      "e2e8"
+    ],
+    "rating": 897,
+    "themes": [
+      "backRankMate",
+      "long",
+      "mate",
+      "mateIn3",
+      "middlegame",
+      "xRayAttack"
+    ],
+    "popularity": 98,
+    "primaryTheme": "backRankMate"
+  },
+  {
+    "id": "5SzPk",
+    "fen": "5rk1/pp1b2pp/1q1Pp3/4Q3/1P2p3/P4B2/5PPP/3R2K1 w - - 0 23",
+    "moves": [
+      "f3e4",
+      "b6f2",
+      "g1h1",
+      "f2f1",
+      "d1f1",
+      "f8f1"
+    ],
+    "rating": 974,
+    "themes": [
+      "backRankMate",
+      "endgame",
+      "long",
+      "mate",
+      "mateIn3",
+      "sacrifice"
+    ],
+    "popularity": 82,
+    "primaryTheme": "backRankMate"
+  },
+  {
+    "id": "5TG0s",
+    "fen": "r5k1/pR4pp/2p1pr2/3p4/2pP2Q1/8/P5PP/R4q1K w - - 2 22",
+    "moves": [
+      "a1f1",
+      "f6f1"
+    ],
+    "rating": 432,
+    "themes": [
+      "backRankMate",
+      "endgame",
+      "mate",
+      "mateIn1",
+      "oneMove",
+      "queenRookEndgame"
+    ],
+    "popularity": 74,
+    "primaryTheme": "backRankMate"
+  },
+  {
+    "id": "5TGKL",
+    "fen": "6k1/2p2ppp/1bppq3/r7/8/4R1BP/5P1K/1Q3R2 b - - 1 29",
+    "moves": [
+      "b6e3",
+      "b1b8",
+      "e6c8",
+      "b8c8"
+    ],
+    "rating": 811,
+    "themes": [
+      "backRankMate",
+      "endgame",
+      "mate",
+      "mateIn2",
+      "short"
+    ],
+    "popularity": 95,
+    "primaryTheme": "backRankMate"
+  },
+  {
+    "id": "5THUV",
+    "fen": "1r1r2k1/3NRppp/8/8/p7/5P2/2b2KPP/4R3 b - - 4 30",
+    "moves": [
+      "d8d7",
+      "e7e8",
+      "b8e8",
+      "e1e8"
+    ],
+    "rating": 1202,
+    "themes": [
+      "backRankMate",
+      "endgame",
+      "mate",
+      "mateIn2",
+      "short"
+    ],
+    "popularity": 33,
+    "primaryTheme": "backRankMate"
+  },
+  {
+    "id": "5THgx",
+    "fen": "4r1rk/p5p1/4B1Qp/1pp3R1/3p4/8/PP3RPP/7K w - - 1 31",
+    "moves": [
+      "e6g8",
+      "e8e1",
+      "f2f1",
+      "e1f1"
+    ],
+    "rating": 797,
+    "themes": [
+      "backRankMate",
+      "endgame",
+      "mate",
+      "mateIn2",
+      "short"
+    ],
+    "popularity": 89,
+    "primaryTheme": "backRankMate"
+  },
+  {
+    "id": "5TIga",
+    "fen": "r1b2rk1/pp3ppp/4pb2/4q3/3Q4/1N3P2/PPP3PP/2KR1B1R b - - 0 14",
+    "moves": [
+      "f8d8",
+      "d4d8",
+      "f6d8",
+      "d1d8"
+    ],
+    "rating": 968,
+    "themes": [
+      "backRankMate",
+      "mate",
+      "mateIn2",
+      "middlegame",
+      "short"
+    ],
+    "popularity": 82,
+    "primaryTheme": "backRankMate"
+  },
+  {
+    "id": "5Tcz1",
+    "fen": "1k6/p6p/3r1p2/8/5q2/8/PP4PP/5R1K w - - 0 33",
+    "moves": [
+      "f1f4",
+      "d6d1",
+      "f4f1",
+      "d1f1"
+    ],
+    "rating": 400,
+    "themes": [
+      "backRankMate",
+      "endgame",
+      "mate",
+      "mateIn2",
+      "rookEndgame",
+      "short"
+    ],
+    "popularity": 60,
+    "primaryTheme": "backRankMate"
+  },
+  {
+    "id": "5TdLc",
+    "fen": "2r1Q1k1/5ppp/2Pr4/p2P4/1q3P2/7P/6P1/2R1R1K1 b - - 2 33",
+    "moves": [
+      "c8e8",
+      "e1e8"
+    ],
+    "rating": 399,
+    "themes": [
+      "backRankMate",
+      "endgame",
+      "mate",
+      "mateIn1",
+      "oneMove",
+      "queenRookEndgame"
+    ],
+    "popularity": 79,
+    "primaryTheme": "backRankMate"
+  },
+  {
+    "id": "5TeTw",
+    "fen": "1k2r3/pP4p1/8/7p/8/2P5/PP4PP/3Qq2K w - - 1 35",
+    "moves": [
+      "d1e1",
+      "e8e1"
+    ],
+    "rating": 579,
+    "themes": [
+      "backRankMate",
+      "endgame",
+      "master",
+      "masterVsMaster",
+      "mate",
+      "mateIn1",
+      "oneMove"
+    ],
+    "popularity": 64,
+    "primaryTheme": "backRankMate"
+  },
+  {
+    "id": "5Tfyc",
+    "fen": "8/1p1N1p1p/6pk/p2P4/3B4/5B2/PPr2PPP/6K1 w - - 3 28",
+    "moves": [
+      "d4c3",
+      "c2c1",
+      "f3d1",
+      "c1d1",
+      "c3e1",
+      "d1e1"
+    ],
+    "rating": 469,
+    "themes": [
+      "backRankMate",
+      "endgame",
+      "long",
+      "mate",
+      "mateIn3"
+    ],
+    "popularity": 64,
+    "primaryTheme": "backRankMate"
+  },
+  {
+    "id": "5Tg9u",
+    "fen": "2rr3k/6pp/p2RQ3/1p5P/4P3/P3NK2/1q6/8 b - - 1 34",
+    "moves": [
+      "d8d6",
+      "e6c8",
+      "d6d8",
+      "c8d8"
+    ],
+    "rating": 1328,
+    "themes": [
+      "backRankMate",
+      "endgame",
+      "hangingPiece",
+      "mate",
+      "mateIn2",
+      "short"
+    ],
+    "popularity": 68,
+    "primaryTheme": "backRankMate"
+  },
+  {
+    "id": "5TgCo",
+    "fen": "6k1/pp6/2p4Q/2p1p3/2Pq4/1P1P4/P5PP/6K1 w - - 1 31",
+    "moves": [
+      "g1h1",
+      "d4a1",
+      "h6c1",
+      "a1c1"
+    ],
+    "rating": 956,
+    "themes": [
+      "backRankMate",
+      "endgame",
+      "mate",
+      "mateIn2",
+      "queenEndgame",
+      "short"
+    ],
+    "popularity": 100,
+    "primaryTheme": "backRankMate"
+  },
+  {
+    "id": "5TxQr",
+    "fen": "3r2k1/3r1p1p/p5p1/8/8/1BQ1P2P/PP3P2/K2q2R1 w - - 9 29",
+    "moves": [
+      "g1d1",
+      "d7d1",
+      "b3d1",
+      "d8d1",
+      "c3c1",
+      "d1c1"
+    ],
+    "rating": 568,
+    "themes": [
+      "backRankMate",
+      "endgame",
+      "long",
+      "mate",
+      "mateIn3"
+    ],
+    "popularity": 82,
+    "primaryTheme": "backRankMate"
+  },
+  {
+    "id": "5TxcW",
+    "fen": "5k2/5r1p/6p1/1B1p4/P1n2q2/3Q4/6PP/2R3K1 w - - 4 40",
+    "moves": [
+      "d3c3",
+      "f4f2",
+      "g1h1",
+      "f2f1",
+      "c1f1",
+      "f7f1"
+    ],
+    "rating": 1402,
+    "themes": [
+      "backRankMate",
+      "endgame",
+      "long",
+      "mate",
+      "mateIn3",
+      "sacrifice"
+    ],
+    "popularity": 72,
+    "primaryTheme": "backRankMate"
+  },
+  {
+    "id": "5TzfY",
+    "fen": "6k1/5pb1/6pp/B2Bp3/3P4/P3PN2/2r2PPP/6K1 w - - 0 28",
+    "moves": [
+      "f3e5",
+      "c2c1",
+      "a5e1",
+      "c1e1"
+    ],
+    "rating": 524,
+    "themes": [
+      "backRankMate",
+      "endgame",
+      "mate",
+      "mateIn2",
+      "short"
+    ],
+    "popularity": 100,
+    "primaryTheme": "backRankMate"
+  },
+  {
+    "id": "5U0fa",
+    "fen": "r1b3k1/ppp3pp/2n5/8/3qr3/5Q2/PPPB2PP/R4R1K b - - 1 16",
+    "moves": [
+      "c8g4",
+      "f3f7",
+      "g8h8",
+      "f7f8",
+      "a8f8",
+      "f1f8"
+    ],
+    "rating": 1052,
+    "themes": [
+      "backRankMate",
+      "long",
+      "mate",
+      "mateIn3",
+      "middlegame",
+      "sacrifice"
+    ],
+    "popularity": 94,
+    "primaryTheme": "backRankMate"
+  },
+  {
+    "id": "5UIh9",
+    "fen": "r2r2k1/2p2pp1/2Q4p/p3P3/1p1n4/5R1P/PPP3P1/2K5 w - - 6 25",
+    "moves": [
+      "c6c7",
+      "d4e2",
+      "c1b1",
+      "d8d1"
+    ],
+    "rating": 988,
+    "themes": [
+      "backRankMate",
+      "endgame",
+      "mate",
+      "mateIn2",
+      "short"
+    ],
+    "popularity": 98,
+    "primaryTheme": "backRankMate"
+  },
+  {
+    "id": "5ULSf",
+    "fen": "6kb/p7/1p2r2p/5Np1/1P2n3/P2P3P/5PPB/R4K2 w - - 1 33",
+    "moves": [
+      "a1e1",
+      "e4d2",
+      "f1g1",
+      "e6e1"
+    ],
+    "rating": 965,
+    "themes": [
+      "backRankMate",
+      "deflection",
+      "discoveredAttack",
+      "endgame",
+      "mate",
+      "mateIn2",
+      "short"
+    ],
+    "popularity": 80,
+    "primaryTheme": "backRankMate"
+  },
+  {
+    "id": "5Ug5i",
+    "fen": "r1b1k3/ppp2ppp/2p5/8/8/2P5/PBP2PPP/4R1K1 b - - 0 15",
+    "moves": [
+      "e8f8",
+      "b2a3",
+      "c6c5",
+      "a3c5",
+      "f8g8",
+      "e1e8"
+    ],
+    "rating": 1082,
+    "themes": [
+      "backRankMate",
+      "endgame",
+      "long",
+      "mate",
+      "mateIn3"
+    ],
+    "popularity": 55,
+    "primaryTheme": "backRankMate"
+  },
+  {
+    "id": "5UzIy",
+    "fen": "3r2k1/p4ppp/1p2p3/4b3/8/7P/3B1PP1/2R3K1 b - - 1 26",
+    "moves": [
+      "d8d2",
+      "c1c8",
+      "d2d8",
+      "c8d8"
+    ],
+    "rating": 406,
+    "themes": [
+      "backRankMate",
+      "endgame",
+      "mate",
+      "mateIn2",
+      "short"
+    ],
+    "popularity": 73,
+    "primaryTheme": "backRankMate"
+  },
+  {
+    "id": "5V03c",
+    "fen": "2Q5/5ppk/p4n1p/8/1q6/1B5P/PPP2PP1/2KRr3 w - - 3 22",
+    "moves": [
+      "c8a6",
+      "b4f4",
+      "c1b1",
+      "e1d1"
+    ],
+    "rating": 1414,
+    "themes": [
+      "backRankMate",
+      "deflection",
+      "endgame",
+      "mate",
+      "mateIn2",
+      "short"
+    ],
+    "popularity": 97,
+    "primaryTheme": "backRankMate"
+  },
+  {
+    "id": "5V09F",
+    "fen": "r5k1/2N3bp/4p3/5p1Q/2P5/8/P4RPP/1r4K1 w - - 1 30",
+    "moves": [
+      "f2f1",
+      "g7d4",
+      "g1h1",
+      "b1f1"
+    ],
+    "rating": 898,
+    "themes": [
+      "backRankMate",
+      "deflection",
+      "endgame",
+      "mate",
+      "mateIn2",
+      "short"
+    ],
+    "popularity": 92,
+    "primaryTheme": "backRankMate"
+  },
+  {
+    "id": "5V0Xn",
+    "fen": "6k1/p4ppp/1p6/2p2pP1/3p1B2/1P1P2K1/P1r5/4R3 b - - 1 33",
+    "moves": [
+      "g8f8",
+      "f4d6",
+      "f8g8",
+      "e1e8"
+    ],
+    "rating": 812,
+    "themes": [
+      "backRankMate",
+      "endgame",
+      "mate",
+      "mateIn2",
+      "short"
+    ],
+    "popularity": 94,
+    "primaryTheme": "backRankMate"
+  },
+  {
+    "id": "5V10S",
+    "fen": "5k2/2r2pp1/2q1p1P1/pp1p4/3P4/5Q2/PPP2P2/1KR4r w - - 0 23",
+    "moves": [
+      "c1h1",
+      "c6c2",
+      "b1a1",
+      "c2c1",
+      "h1c1",
+      "c7c1"
+    ],
+    "rating": 768,
+    "themes": [
+      "backRankMate",
+      "endgame",
+      "long",
+      "mate",
+      "mateIn3",
+      "sacrifice"
+    ],
+    "popularity": 68,
+    "primaryTheme": "backRankMate"
+  },
+  {
+    "id": "5V15J",
+    "fen": "2r3k1/Q5pp/p7/3q4/2p5/P6P/6P1/5RK1 b - - 1 36",
+    "moves": [
+      "d5c6",
+      "a7f7",
+      "g8h8",
+      "f7f8",
+      "c8f8",
+      "f1f8"
+    ],
+    "rating": 905,
+    "themes": [
+      "backRankMate",
+      "endgame",
+      "long",
+      "mate",
+      "mateIn3",
+      "sacrifice"
+    ],
+    "popularity": 95,
+    "primaryTheme": "backRankMate"
+  },
+  {
+    "id": "5V1fX",
+    "fen": "3r1r1k/6pp/p1Q5/8/8/1P6/P4qPP/1R1R2K1 w - - 0 26",
+    "moves": [
+      "g1h1",
+      "d8d1",
+      "b1d1",
+      "f2f1",
+      "d1f1",
+      "f8f1"
+    ],
+    "rating": 1062,
+    "themes": [
+      "backRankMate",
+      "endgame",
+      "long",
+      "mate",
+      "mateIn3",
+      "sacrifice"
+    ],
+    "popularity": 93,
+    "primaryTheme": "backRankMate"
+  },
+  {
+    "id": "5VJ4N",
+    "fen": "2kr3r/pppq2p1/4p2p/5p2/Q2n1P2/8/PPP2PBP/2KR2R1 w - - 0 18",
+    "moves": [
+      "a4a7",
+      "d4e2",
+      "c1b1",
+      "d7d1",
+      "g1d1",
+      "d8d1"
+    ],
+    "rating": 1549,
+    "themes": [
+      "backRankMate",
+      "deflection",
+      "discoveredAttack",
+      "fork",
+      "long",
+      "mate",
+      "mateIn3",
+      "middlegame"
+    ],
+    "popularity": 81,
+    "primaryTheme": "backRankMate"
+  },
+  {
+    "id": "5Vc8P",
+    "fen": "3r1Q2/1k2p1Qp/p1b3p1/qp1n2N1/6B1/8/PPP2PPP/1K1R4 w - - 5 25",
+    "moves": [
+      "d1d5",
+      "a5e1",
+      "g4d1",
+      "e1d1",
+      "d5d1",
+      "d8d1"
+    ],
+    "rating": 1638,
+    "themes": [
+      "backRankMate",
+      "long",
+      "mate",
+      "mateIn3",
+      "middlegame",
+      "xRayAttack"
+    ],
+    "popularity": 100,
+    "primaryTheme": "backRankMate"
+  },
+  {
+    "id": "5Vdj0",
+    "fen": "1k2r3/ppp3pp/R1p2p2/2B5/3P4/2P1q3/2P3PP/1Q5K w - - 2 23",
+    "moves": [
+      "a6a7",
+      "e3e1",
+      "b1e1",
+      "e8e1"
+    ],
+    "rating": 573,
+    "themes": [
+      "backRankMate",
+      "endgame",
+      "mate",
+      "mateIn2",
+      "short"
+    ],
+    "popularity": 100,
+    "primaryTheme": "backRankMate"
+  },
+  {
+    "id": "5VebH",
+    "fen": "3r3k/pp4pp/1q3p2/3r4/4Q3/5P2/3pR1PP/3R3K b - - 3 38",
+    "moves": [
+      "b6b3",
+      "e4e8",
+      "d8e8",
+      "e2e8"
+    ],
+    "rating": 1088,
+    "themes": [
+      "backRankMate",
+      "endgame",
+      "mate",
+      "mateIn2",
+      "sacrifice",
+      "short"
+    ],
+    "popularity": 82,
+    "primaryTheme": "backRankMate"
+  },
+  {
+    "id": "5VemP",
+    "fen": "rn1k3r/pbpp1Q2/1p2p3/6B1/3Pq2p/8/P5PP/R4RK1 b - - 1 19",
+    "moves": [
+      "d8c8",
+      "f7f8",
+      "h8f8",
+      "f1f8"
+    ],
+    "rating": 927,
+    "themes": [
+      "backRankMate",
+      "mate",
+      "mateIn2",
+      "middlegame",
+      "sacrifice",
+      "short"
+    ],
+    "popularity": 93,
+    "primaryTheme": "backRankMate"
+  },
+  {
+    "id": "5VepB",
+    "fen": "4r1k1/pp1R1p1p/6p1/8/8/2Q2P2/PPP4P/1K4r1 w - - 1 24",
+    "moves": [
+      "d7d1",
+      "g1d1"
+    ],
+    "rating": 652,
+    "themes": [
+      "backRankMate",
+      "endgame",
+      "hangingPiece",
+      "mate",
+      "mateIn1",
+      "oneMove",
+      "queenRookEndgame"
+    ],
+    "popularity": 74,
+    "primaryTheme": "backRankMate"
+  },
+  {
+    "id": "5Vey1",
+    "fen": "2rr2k1/Q4ppp/1p1P4/2p1q3/3nP3/8/PP4PP/2KR1R2 b - - 0 30",
+    "moves": [
+      "d8d6",
+      "a7f7",
+      "g8h8",
+      "f7f8",
+      "c8f8",
+      "f1f8"
+    ],
+    "rating": 1095,
+    "themes": [
+      "backRankMate",
+      "long",
+      "mate",
+      "mateIn3",
+      "middlegame",
+      "sacrifice"
+    ],
+    "popularity": 89,
+    "primaryTheme": "backRankMate"
+  },
+  {
+    "id": "5Vwic",
+    "fen": "k2r3r/pp6/4p3/6p1/8/7N/PQ3PPP/1R1q2K1 w - - 3 26",
+    "moves": [
+      "b1d1",
+      "d8d1"
+    ],
+    "rating": 460,
+    "themes": [
+      "backRankMate",
+      "endgame",
+      "mate",
+      "mateIn1",
+      "oneMove"
+    ],
+    "popularity": 95,
+    "primaryTheme": "backRankMate"
+  },
+  {
+    "id": "5Vwqb",
+    "fen": "3r4/pppqkp1Q/2b1p3/2P5/4p3/4P2N/P4PPP/R5K1 w - - 1 28",
+    "moves": [
+      "h3g5",
+      "d7d1",
+      "a1d1",
+      "d8d1"
+    ],
+    "rating": 577,
+    "themes": [
+      "backRankMate",
+      "endgame",
+      "mate",
+      "mateIn2",
+      "sacrifice",
+      "short"
+    ],
+    "popularity": 69,
+    "primaryTheme": "backRankMate"
+  },
+  {
+    "id": "5Vzgi",
+    "fen": "8/R4pkp/4p1p1/3pP1N1/3n4/8/5PPP/1r3BK1 w - - 2 35",
+    "moves": [
+      "g5f7",
+      "d4e2",
+      "g1h1",
+      "b1f1"
+    ],
+    "rating": 1068,
+    "themes": [
+      "backRankMate",
+      "deflection",
+      "endgame",
+      "mate",
+      "mateIn2",
+      "pin",
+      "short"
+    ],
+    "popularity": 90,
+    "primaryTheme": "backRankMate"
+  },
+  {
+    "id": "5WFu9",
+    "fen": "1k3b2/pppQp1p1/2n4r/6q1/6pp/2B4P/PPP2PP1/3R2K1 b - - 2 22",
+    "moves": [
+      "h6d6",
+      "d7e8",
+      "c6d8",
+      "e8d8",
+      "d6d8",
+      "d1d8"
+    ],
+    "rating": 1851,
+    "themes": [
+      "backRankMate",
+      "fork",
+      "long",
+      "mate",
+      "mateIn3",
+      "middlegame",
+      "xRayAttack"
+    ],
+    "popularity": 88,
+    "primaryTheme": "backRankMate"
+  },
+  {
+    "id": "5WGLq",
+    "fen": "8/1p3pkp/p5p1/8/3rP3/1P6/P4PPP/4R1K1 w - - 0 30",
+    "moves": [
+      "e1e2",
+      "d4d1",
+      "e2e1",
+      "d1e1"
+    ],
+    "rating": 444,
+    "themes": [
+      "backRankMate",
+      "endgame",
+      "mate",
+      "mateIn2",
+      "rookEndgame",
+      "short"
+    ],
+    "popularity": 72,
+    "primaryTheme": "backRankMate"
+  },
+  {
+    "id": "5WIc5",
+    "fen": "3Q4/4rk2/p4p2/1p4pp/2p5/8/PPP2PPP/6K1 w - - 2 37",
+    "moves": [
+      "d8d4",
+      "e7e1"
+    ],
+    "rating": 485,
+    "themes": [
+      "backRankMate",
+      "endgame",
+      "mate",
+      "mateIn1",
+      "oneMove",
+      "queenRookEndgame"
+    ],
+    "popularity": 100,
+    "primaryTheme": "backRankMate"
+  },
+  {
+    "id": "5Wf0u",
+    "fen": "2r3k1/1p3p1p/5Pp1/1p6/8/P3R3/1P2N1PP/2q4K w - - 0 33",
+    "moves": [
+      "e2c1",
+      "c8c1",
+      "e3e1",
+      "c1e1"
+    ],
+    "rating": 1212,
+    "themes": [
+      "backRankMate",
+      "endgame",
+      "master",
+      "mate",
+      "mateIn2",
+      "short"
+    ],
+    "popularity": 22,
+    "primaryTheme": "backRankMate"
+  }
+]

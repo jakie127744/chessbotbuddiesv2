@@ -1,0 +1,1100 @@
+[
+  {
+    "id": "5SIJv",
+    "fen": "r4r1k/q5pp/4R3/p1np4/8/3B4/PP2NbPP/3Q1R1K w - - 2 20",
+    "moves": [
+      "e6d6",
+      "c5d3",
+      "d1d3",
+      "f2c5"
+    ],
+    "rating": 1859,
+    "themes": [
+      "advantage",
+      "clearance",
+      "middlegame",
+      "short"
+    ],
+    "popularity": 96,
+    "primaryTheme": "clearance"
+  },
+  {
+    "id": "5SIRc",
+    "fen": "1r1r2k1/1p1n2b1/p2qp1Q1/7p/3P4/PP5P/1B3PP1/2R1R1K1 b - - 0 22",
+    "moves": [
+      "d7f6",
+      "d4d5",
+      "e6d5",
+      "b2e5",
+      "d6f8",
+      "e5b8"
+    ],
+    "rating": 1963,
+    "themes": [
+      "advantage",
+      "clearance",
+      "long",
+      "middlegame",
+      "skewer"
+    ],
+    "popularity": 88,
+    "primaryTheme": "clearance"
+  },
+  {
+    "id": "5ScJh",
+    "fen": "2rq4/3b1pk1/3Qp3/3pP2p/p2P3p/4PBnP/PP1B1KP1/R7 w - - 1 28",
+    "moves": [
+      "a1c1",
+      "c8c1",
+      "d2c1",
+      "d8c8",
+      "d6c5",
+      "c8a6",
+      "f2e1",
+      "a6f1",
+      "e1d2",
+      "d7b5",
+      "c5c2",
+      "b5e2"
+    ],
+    "rating": 2492,
+    "themes": [
+      "clearance",
+      "crushing",
+      "middlegame",
+      "quietMove",
+      "veryLong"
+    ],
+    "popularity": 78,
+    "primaryTheme": "clearance"
+  },
+  {
+    "id": "5TcoF",
+    "fen": "r1bqk2r/pp1nb1p1/2n4p/2pBP3/8/3P1N2/PPP3PP/R1BQ1RK1 b kq - 0 12",
+    "moves": [
+      "d7e5",
+      "f3e5",
+      "d8d5",
+      "d1h5",
+      "g7g6",
+      "h5g6",
+      "e8d8",
+      "e5f7"
+    ],
+    "rating": 1579,
+    "themes": [
+      "advantage",
+      "clearance",
+      "exposedKing",
+      "opening",
+      "veryLong"
+    ],
+    "popularity": 95,
+    "primaryTheme": "clearance"
+  },
+  {
+    "id": "5TeGi",
+    "fen": "2k3rr/pp3p2/2qb4/2pp1p2/5P2/1PN2Q2/P1PP3P/R4R1K w - - 0 19",
+    "moves": [
+      "f3d5",
+      "h8h2",
+      "h1h2",
+      "d6f4",
+      "f1f4",
+      "c6h6",
+      "f4h4",
+      "h6h4"
+    ],
+    "rating": 1724,
+    "themes": [
+      "attraction",
+      "clearance",
+      "fork",
+      "mate",
+      "mateIn4",
+      "middlegame",
+      "pin",
+      "sacrifice",
+      "veryLong"
+    ],
+    "popularity": 93,
+    "primaryTheme": "clearance"
+  },
+  {
+    "id": "5TfD7",
+    "fen": "k1r2r2/4QN2/p7/1p1Pp3/3pP1p1/3P4/PP1R4/1K3b2 w - - 0 43",
+    "moves": [
+      "f7d6",
+      "f1d3",
+      "d2d3",
+      "f8f1",
+      "d3d1",
+      "f1d1"
+    ],
+    "rating": 1137,
+    "themes": [
+      "clearance",
+      "endgame",
+      "long",
+      "mate",
+      "mateIn3",
+      "queensideAttack",
+      "sacrifice"
+    ],
+    "popularity": 83,
+    "primaryTheme": "clearance"
+  },
+  {
+    "id": "5TfDa",
+    "fen": "8/r3B3/3Pk3/7p/pp2K2P/1P4P1/P7/8 w - - 0 49",
+    "moves": [
+      "e4f4",
+      "a4b3",
+      "a2b3",
+      "a7a3",
+      "g3g4",
+      "h5g4"
+    ],
+    "rating": 1890,
+    "themes": [
+      "clearance",
+      "crushing",
+      "endgame",
+      "long",
+      "master"
+    ],
+    "popularity": 90,
+    "primaryTheme": "clearance"
+  },
+  {
+    "id": "5TyOQ",
+    "fen": "6k1/p1p3pp/1np1P3/8/5PB1/Pn4PP/3r4/4R1K1 b - - 2 33",
+    "moves": [
+      "d2d8",
+      "e6e7",
+      "d8e8",
+      "g4e6",
+      "g8h8",
+      "e6f7"
+    ],
+    "rating": 1989,
+    "themes": [
+      "advancedPawn",
+      "clearance",
+      "crushing",
+      "endgame",
+      "fork",
+      "long"
+    ],
+    "popularity": 33,
+    "primaryTheme": "clearance"
+  },
+  {
+    "id": "5Ud77",
+    "fen": "5r1k/4Rpp1/1p1q1n2/pQ1p3p/P4P1K/6PP/1P6/4R3 w - - 2 34",
+    "moves": [
+      "e7b7",
+      "f6e4",
+      "e1e4",
+      "d6f6"
+    ],
+    "rating": 2284,
+    "themes": [
+      "clearance",
+      "crushing",
+      "endgame",
+      "sacrifice",
+      "short"
+    ],
+    "popularity": 84,
+    "primaryTheme": "clearance"
+  },
+  {
+    "id": "5V0tn",
+    "fen": "6r1/1ppbqp1k/p1p2p1p/4P1r1/8/2N1RQ1P/PPP2PP1/3R1K2 b - - 0 18",
+    "moves": [
+      "g5e5",
+      "e3e5",
+      "f6e5",
+      "f3d3",
+      "h7g7",
+      "d3d7",
+      "e7d7",
+      "d1d7"
+    ],
+    "rating": 2085,
+    "themes": [
+      "advantage",
+      "clearance",
+      "middlegame",
+      "veryLong"
+    ],
+    "popularity": 25,
+    "primaryTheme": "clearance"
+  },
+  {
+    "id": "5Vf63",
+    "fen": "8/2p2pkp/1p1p1bp1/p2P4/2P5/1P2B2P/P2QKPP1/1q6 b - - 11 35",
+    "moves": [
+      "b1g1",
+      "e3h6",
+      "g7g8",
+      "d2e3",
+      "f6e5",
+      "e3g5"
+    ],
+    "rating": 1766,
+    "themes": [
+      "clearance",
+      "crushing",
+      "endgame",
+      "long"
+    ],
+    "popularity": 86,
+    "primaryTheme": "clearance"
+  },
+  {
+    "id": "5Vx17",
+    "fen": "1k6/1r3p2/3pqp1p/1r2p3/4P3/1PR1Q1P1/1K3P1P/2R5 w - - 6 35",
+    "moves": [
+      "e3h6",
+      "b5b3",
+      "b2c2",
+      "b3c3",
+      "c2c3",
+      "e6a2",
+      "c3d3",
+      "b7b3"
+    ],
+    "rating": 2497,
+    "themes": [
+      "clearance",
+      "crushing",
+      "endgame",
+      "veryLong"
+    ],
+    "popularity": 92,
+    "primaryTheme": "clearance"
+  },
+  {
+    "id": "5WIYQ",
+    "fen": "5rk1/6pp/5p2/Q3pq2/1p6/1P6/1Pr2PPP/R4RK1 b - - 2 24",
+    "moves": [
+      "c2b2",
+      "a5d5",
+      "g8h8",
+      "a1a8",
+      "f5c8",
+      "a8c8"
+    ],
+    "rating": 1166,
+    "themes": [
+      "advantage",
+      "clearance",
+      "endgame",
+      "long"
+    ],
+    "popularity": 83,
+    "primaryTheme": "clearance"
+  },
+  {
+    "id": "5WboX",
+    "fen": "2b5/1k4r1/3q4/1p1pn1p1/2p1P3/2P1Q1P1/1PB2PP1/R5K1 b - - 2 32",
+    "moves": [
+      "e5c6",
+      "e4d5",
+      "d6d5",
+      "c2e4",
+      "d5e4",
+      "e3e4"
+    ],
+    "rating": 1606,
+    "themes": [
+      "clearance",
+      "crushing",
+      "long",
+      "middlegame"
+    ],
+    "popularity": 92,
+    "primaryTheme": "clearance"
+  },
+  {
+    "id": "5We4a",
+    "fen": "q1r5/1p3pkp/p1n1p1p1/3p4/5B2/2P4P/P4PP1/2Q2RK1 b - - 1 24",
+    "moves": [
+      "b7b5",
+      "f4h6",
+      "g7g8",
+      "c1g5",
+      "c8c7",
+      "g5f6",
+      "a8f8",
+      "h6f8"
+    ],
+    "rating": 1745,
+    "themes": [
+      "clearance",
+      "crushing",
+      "endgame",
+      "veryLong"
+    ],
+    "popularity": 93,
+    "primaryTheme": "clearance"
+  },
+  {
+    "id": "5XdSG",
+    "fen": "r1b2rk1/pppq1pp1/7p/8/2BnN3/3Q4/PP3PPP/R4RK1 b - - 0 14",
+    "moves": [
+      "d4c6",
+      "e4f6",
+      "g7f6",
+      "d3g6",
+      "g8h8",
+      "g6h6"
+    ],
+    "rating": 2290,
+    "themes": [
+      "advantage",
+      "clearance",
+      "kingsideAttack",
+      "long",
+      "middlegame",
+      "pin",
+      "sacrifice"
+    ],
+    "popularity": 82,
+    "primaryTheme": "clearance"
+  },
+  {
+    "id": "5Y0AU",
+    "fen": "4R3/p4p1k/6pp/3P2q1/4Q3/6rP/PP3RP1/2r3K1 w - - 2 33",
+    "moves": [
+      "g1h2",
+      "g3h3",
+      "g2h3",
+      "g5g1"
+    ],
+    "rating": 1530,
+    "themes": [
+      "clearance",
+      "endgame",
+      "mate",
+      "mateIn2",
+      "sacrifice",
+      "short"
+    ],
+    "popularity": 96,
+    "primaryTheme": "clearance"
+  },
+  {
+    "id": "5YIS7",
+    "fen": "1r3r1k/p5pp/8/q2p1pP1/1b1Q3P/1P1B4/P1P2P1R/1K4R1 w - - 1 27",
+    "moves": [
+      "a2a4",
+      "b4c3",
+      "d4f4",
+      "b8b4"
+    ],
+    "rating": 2264,
+    "themes": [
+      "clearance",
+      "crushing",
+      "middlegame",
+      "short"
+    ],
+    "popularity": 90,
+    "primaryTheme": "clearance"
+  },
+  {
+    "id": "5Yf3q",
+    "fen": "r4bk1/pp4p1/2p1P1p1/3Pq3/6P1/4BQ2/PP5P/5RK1 b - - 3 22",
+    "moves": [
+      "c6d5",
+      "f3f7",
+      "g8h7",
+      "f1f3",
+      "e5e3",
+      "f3e3"
+    ],
+    "rating": 1775,
+    "themes": [
+      "clearance",
+      "crushing",
+      "endgame",
+      "long",
+      "quietMove"
+    ],
+    "popularity": 93,
+    "primaryTheme": "clearance"
+  },
+  {
+    "id": "5YxAs",
+    "fen": "3r2k1/5ppp/1p6/8/1Q6/P1P2P2/1P2p1PP/3rR2K w - - 1 28",
+    "moves": [
+      "b4h4",
+      "d1e1",
+      "h4e1",
+      "d8d1",
+      "h1g1",
+      "d1e1"
+    ],
+    "rating": 601,
+    "themes": [
+      "attraction",
+      "clearance",
+      "crushing",
+      "endgame",
+      "long",
+      "pin",
+      "queenRookEndgame"
+    ],
+    "popularity": 94,
+    "primaryTheme": "clearance"
+  },
+  {
+    "id": "5ZJhs",
+    "fen": "3rrbk1/1p3pp1/p1bp1n1p/2p5/4P3/qPN2PPP/P1PB1QBK/R4R2 b - - 4 21",
+    "moves": [
+      "b7b5",
+      "c3b1",
+      "a3b2",
+      "d2c3",
+      "b2a1",
+      "c3a1"
+    ],
+    "rating": 1725,
+    "themes": [
+      "clearance",
+      "crushing",
+      "long",
+      "middlegame",
+      "trappedPiece"
+    ],
+    "popularity": 85,
+    "primaryTheme": "clearance"
+  },
+  {
+    "id": "5ZLmg",
+    "fen": "r5rk/pp3p1p/5q2/2p2b1Q/3nB3/5P2/PPP3PP/2KR2NR w - - 7 18",
+    "moves": [
+      "c2c3",
+      "f5e4",
+      "f3e4",
+      "f6f4",
+      "d1d2",
+      "g8g2"
+    ],
+    "rating": 2174,
+    "themes": [
+      "clearance",
+      "crushing",
+      "long",
+      "middlegame",
+      "pin"
+    ],
+    "popularity": 90,
+    "primaryTheme": "clearance"
+  },
+  {
+    "id": "5Zfzc",
+    "fen": "r3qrk1/1pp2ppN/p2b1n2/3p1Q2/8/2P1P3/PPB2PPP/R1B2bK1 b - - 0 17",
+    "moves": [
+      "e8e5",
+      "h7f6",
+      "g7f6",
+      "f5h7"
+    ],
+    "rating": 1085,
+    "themes": [
+      "clearance",
+      "kingsideAttack",
+      "mate",
+      "mateIn2",
+      "middlegame",
+      "short"
+    ],
+    "popularity": 94,
+    "primaryTheme": "clearance"
+  },
+  {
+    "id": "5a3nA",
+    "fen": "3q1rk1/5ppp/3p3Q/p1pB4/3bPK1P/3P1P2/Pr3P2/R5R1 b - - 3 28",
+    "moves": [
+      "b2f2",
+      "g1g7",
+      "d4g7",
+      "a1g1",
+      "d8h4",
+      "h6h4"
+    ],
+    "rating": 1726,
+    "themes": [
+      "clearance",
+      "crushing",
+      "long",
+      "middlegame",
+      "pin",
+      "sacrifice"
+    ],
+    "popularity": 94,
+    "primaryTheme": "clearance"
+  },
+  {
+    "id": "5agrO",
+    "fen": "6k1/5p2/2q3pp/2PbPp2/1Qp2P2/6P1/3BK2P/8 w - - 5 48",
+    "moves": [
+      "b4b6",
+      "d5f3",
+      "e2f2",
+      "c6e4"
+    ],
+    "rating": 1577,
+    "themes": [
+      "clearance",
+      "crushing",
+      "endgame",
+      "short"
+    ],
+    "popularity": 94,
+    "primaryTheme": "clearance"
+  },
+  {
+    "id": "5agt7",
+    "fen": "4r3/p5k1/1p4pp/3q4/3ppQ2/3P2P1/PPP4P/5RK1 b - - 1 23",
+    "moves": [
+      "e4e3",
+      "f4c7",
+      "g7h8",
+      "f1f7",
+      "d5f7",
+      "c7f7"
+    ],
+    "rating": 2352,
+    "themes": [
+      "clearance",
+      "crushing",
+      "endgame",
+      "long",
+      "quietMove"
+    ],
+    "popularity": 96,
+    "primaryTheme": "clearance"
+  },
+  {
+    "id": "5ahO5",
+    "fen": "6rr/pp1k1p2/2pPp2p/1P5q/4P3/P4P2/4Q1pB/4R1K1 b - - 0 25",
+    "moves": [
+      "g8g5",
+      "b5c6",
+      "b7c6",
+      "e2a6",
+      "h5h2",
+      "g1h2"
+    ],
+    "rating": 1792,
+    "themes": [
+      "clearance",
+      "crushing",
+      "endgame",
+      "long"
+    ],
+    "popularity": 92,
+    "primaryTheme": "clearance"
+  },
+  {
+    "id": "5b46o",
+    "fen": "r2q1rk1/pb3ppp/4p3/R1p1P3/8/2PB1N2/2P3PP/3Q1RK1 b - - 0 16",
+    "moves": [
+      "d8a5",
+      "d3h7",
+      "g8h8",
+      "f3g5",
+      "a5c3",
+      "d1h5"
+    ],
+    "rating": 1522,
+    "themes": [
+      "advantage",
+      "clearance",
+      "kingsideAttack",
+      "long",
+      "middlegame"
+    ],
+    "popularity": 95,
+    "primaryTheme": "clearance"
+  },
+  {
+    "id": "5bOur",
+    "fen": "r2qk2r/ppp1nppp/3p4/1B1P1bN1/4R3/8/PP3PPP/R2Q2K1 b kq - 2 14",
+    "moves": [
+      "e8f8",
+      "d1f3",
+      "h7h6",
+      "a1e1"
+    ],
+    "rating": 2497,
+    "themes": [
+      "clearance",
+      "crushing",
+      "defensiveMove",
+      "master",
+      "middlegame",
+      "short"
+    ],
+    "popularity": 82,
+    "primaryTheme": "clearance"
+  },
+  {
+    "id": "5bkFz",
+    "fen": "3rr3/2kqbppp/2pp4/Q7/8/2P1R2P/PPP2PP1/1K1R4 b - - 4 27",
+    "moves": [
+      "c7b7",
+      "c3c4",
+      "d7c7",
+      "e3b3"
+    ],
+    "rating": 1949,
+    "themes": [
+      "clearance",
+      "crushing",
+      "middlegame",
+      "quietMove",
+      "short"
+    ],
+    "popularity": 75,
+    "primaryTheme": "clearance"
+  },
+  {
+    "id": "5c4kx",
+    "fen": "r3k2r/1p2q1nN/4p1pQ/3pPp2/P5P1/1nN5/5P1P/R1R3K1 b kq - 0 23",
+    "moves": [
+      "b3a1",
+      "c3b5",
+      "e8d8",
+      "c1c7",
+      "e7c7",
+      "b5c7"
+    ],
+    "rating": 2667,
+    "themes": [
+      "advantage",
+      "clearance",
+      "long",
+      "middlegame",
+      "quietMove"
+    ],
+    "popularity": 91,
+    "primaryTheme": "clearance"
+  },
+  {
+    "id": "5cRES",
+    "fen": "5k1r/bQ3ppp/8/q1rp4/4b1P1/2P1Pp1P/PP1N1P2/3RK2R b K - 12 25",
+    "moves": [
+      "a5c7",
+      "b7c7",
+      "c5c7",
+      "d2e4",
+      "d5e4",
+      "d1d8",
+      "f8e7",
+      "d8h8"
+    ],
+    "rating": 1803,
+    "themes": [
+      "advantage",
+      "clearance",
+      "middlegame",
+      "skewer",
+      "veryLong"
+    ],
+    "popularity": 88,
+    "primaryTheme": "clearance"
+  },
+  {
+    "id": "5ckkP",
+    "fen": "r1bq3r/pp4pk/1b5p/4Qp2/8/1N3P2/PB2RP1P/4R1K1 b - - 1 23",
+    "moves": [
+      "d8g5",
+      "g1h1",
+      "b6d8",
+      "e1g1"
+    ],
+    "rating": 1707,
+    "themes": [
+      "advantage",
+      "clearance",
+      "defensiveMove",
+      "middlegame",
+      "short"
+    ],
+    "popularity": 94,
+    "primaryTheme": "clearance"
+  },
+  {
+    "id": "5d6Zi",
+    "fen": "5r1k/6p1/7b/2pQp2p/4P2P/PB2q1P1/2P3K1/3R4 w - - 0 37",
+    "moves": [
+      "d5d3",
+      "e3f2",
+      "g2h1",
+      "h6e3",
+      "d3f1",
+      "f2f1",
+      "d1f1",
+      "f8f1"
+    ],
+    "rating": 2401,
+    "themes": [
+      "clearance",
+      "crushing",
+      "endgame",
+      "master",
+      "quietMove",
+      "veryLong"
+    ],
+    "popularity": 94,
+    "primaryTheme": "clearance"
+  },
+  {
+    "id": "5dQRV",
+    "fen": "3r2k1/pb3pp1/1b5p/4p3/P4q2/1P4N1/1r2BPPP/3RQRK1 b - - 4 23",
+    "moves": [
+      "b2b3",
+      "d1d8",
+      "b6d8",
+      "e1d1"
+    ],
+    "rating": 1646,
+    "themes": [
+      "advantage",
+      "clearance",
+      "middlegame",
+      "short"
+    ],
+    "popularity": 83,
+    "primaryTheme": "clearance"
+  },
+  {
+    "id": "5dhR5",
+    "fen": "2r4k/p5pp/3Q4/8/2P1BPn1/3P4/Pq5r/2R2RK1 w - - 2 29",
+    "moves": [
+      "d6d7",
+      "h2h1",
+      "e4h1",
+      "b2h2"
+    ],
+    "rating": 1686,
+    "themes": [
+      "clearance",
+      "mate",
+      "mateIn2",
+      "middlegame",
+      "sacrifice",
+      "short"
+    ],
+    "popularity": 89,
+    "primaryTheme": "clearance"
+  },
+  {
+    "id": "5e076",
+    "fen": "5rk1/6pp/3p2r1/p3Q3/2P1P3/1P3q2/6RP/6RK w - - 0 37",
+    "moves": [
+      "e5a5",
+      "f3g2",
+      "g1g2",
+      "f8f1",
+      "g2g1",
+      "f1g1"
+    ],
+    "rating": 1764,
+    "themes": [
+      "clearance",
+      "endgame",
+      "long",
+      "mate",
+      "mateIn3",
+      "sacrifice"
+    ],
+    "popularity": 78,
+    "primaryTheme": "clearance"
+  },
+  {
+    "id": "5e1Tm",
+    "fen": "3q1rk1/Q4pbp/3p1np1/4p3/2bBP3/5P2/P4KPP/RN5R w - - 0 19",
+    "moves": [
+      "d4b6",
+      "f6e4",
+      "f3e4",
+      "d8f6"
+    ],
+    "rating": 2012,
+    "themes": [
+      "clearance",
+      "crushing",
+      "middlegame",
+      "sacrifice",
+      "short"
+    ],
+    "popularity": 91,
+    "primaryTheme": "clearance"
+  },
+  {
+    "id": "5e1z7",
+    "fen": "1nkr4/1p6/1p2p3/2n1p3/4P1N1/2P4P/1BQq2PK/R7 w - - 2 30",
+    "moves": [
+      "a1c1",
+      "d2f4",
+      "h2h1",
+      "d8d2"
+    ],
+    "rating": 1816,
+    "themes": [
+      "advantage",
+      "clearance",
+      "middlegame",
+      "short"
+    ],
+    "popularity": 85,
+    "primaryTheme": "clearance"
+  },
+  {
+    "id": "5eNX3",
+    "fen": "2r2rk1/1bq2ppp/p3p1n1/1p1pP3/6NP/1B4R1/P1P1QPP1/5RK1 b - - 0 21",
+    "moves": [
+      "g6h4",
+      "g4f6",
+      "g8h8",
+      "e2h5",
+      "h7h6",
+      "h5h4"
+    ],
+    "rating": 2068,
+    "themes": [
+      "advantage",
+      "clearance",
+      "long",
+      "middlegame",
+      "pin"
+    ],
+    "popularity": 74,
+    "primaryTheme": "clearance"
+  },
+  {
+    "id": "5eg0m",
+    "fen": "7k/1p4rp/p2p4/3P1q1n/3Q1p2/4pP2/PP2r1PP/4R1RK w - - 0 28",
+    "moves": [
+      "e1e2",
+      "h5g3",
+      "h2g3",
+      "f5h5"
+    ],
+    "rating": 1000,
+    "themes": [
+      "clearance",
+      "endgame",
+      "kingsideAttack",
+      "mate",
+      "mateIn2",
+      "sacrifice",
+      "short"
+    ],
+    "popularity": 95,
+    "primaryTheme": "clearance"
+  },
+  {
+    "id": "5eh1U",
+    "fen": "5r2/2nq1ppk/p6p/1p1pPN2/3P4/2P3PQ/5RPP/6K1 b - - 1 29",
+    "moves": [
+      "c7e6",
+      "f5h6",
+      "g7h6",
+      "f2f6"
+    ],
+    "rating": 2214,
+    "themes": [
+      "advantage",
+      "clearance",
+      "endgame",
+      "sacrifice",
+      "short"
+    ],
+    "popularity": 92,
+    "primaryTheme": "clearance"
+  },
+  {
+    "id": "5f2wW",
+    "fen": "3r1rk1/pb3pp1/1p1qpn1p/4NP2/2PP4/3B4/P4QPP/3R1RK1 b - - 4 21",
+    "moves": [
+      "d6d4",
+      "f2d4",
+      "d8d4",
+      "f5e6",
+      "f7e6",
+      "d3h7",
+      "g8h7",
+      "d1d4"
+    ],
+    "rating": 1878,
+    "themes": [
+      "advantage",
+      "clearance",
+      "discoveredAttack",
+      "kingsideAttack",
+      "middlegame",
+      "veryLong"
+    ],
+    "popularity": 87,
+    "primaryTheme": "clearance"
+  },
+  {
+    "id": "5fN34",
+    "fen": "r1bq1rk1/4n1b1/p1npp3/1p4PQ/3PPP2/2N1B3/PP4P1/R3K2R b KQ - 0 16",
+    "moves": [
+      "d8e8",
+      "h5h7",
+      "g8f7",
+      "h1h6"
+    ],
+    "rating": 2210,
+    "themes": [
+      "advantage",
+      "clearance",
+      "middlegame",
+      "pin",
+      "short"
+    ],
+    "popularity": 84,
+    "primaryTheme": "clearance"
+  },
+  {
+    "id": "5fNNC",
+    "fen": "2R2Q2/5ppk/4p1bp/3p4/8/1p5P/5PPK/3q4 b - - 1 37",
+    "moves": [
+      "g6e4",
+      "f8g8",
+      "h7g6",
+      "c8f8",
+      "d1d4",
+      "g8f7"
+    ],
+    "rating": 2753,
+    "themes": [
+      "clearance",
+      "crushing",
+      "endgame",
+      "long"
+    ],
+    "popularity": 91,
+    "primaryTheme": "clearance"
+  },
+  {
+    "id": "5fh29",
+    "fen": "2r4r/2q2k2/2R1p1pP/pB1p4/P2P1Pp1/4P1K1/8/1Q6 b - - 2 42",
+    "moves": [
+      "c7b7",
+      "c6e6",
+      "h8h6",
+      "b5e8",
+      "f7e6",
+      "b1b7"
+    ],
+    "rating": 2158,
+    "themes": [
+      "clearance",
+      "crushing",
+      "discoveredAttack",
+      "endgame",
+      "long"
+    ],
+    "popularity": 90,
+    "primaryTheme": "clearance"
+  },
+  {
+    "id": "5g0qC",
+    "fen": "r2qkbnr/1pp2pp1/p1np4/4p3/2B1PPp1/5N2/PPPP2P1/RNBQ1RK1 w kq - 0 8",
+    "moves": [
+      "f3g5",
+      "d6d5",
+      "c4d5",
+      "f8c5",
+      "d2d4",
+      "c5d4"
+    ],
+    "rating": 2196,
+    "themes": [
+      "advantage",
+      "clearance",
+      "long",
+      "master",
+      "middlegame"
+    ],
+    "popularity": 75,
+    "primaryTheme": "clearance"
+  },
+  {
+    "id": "5g2TQ",
+    "fen": "r7/p2k1N2/4b2p/1Pp1Bpp1/B7/P7/6PP/4K3 b - - 2 31",
+    "moves": [
+      "e6f7",
+      "b5b6",
+      "d7c8",
+      "a4c6",
+      "a7b6",
+      "c6a8"
+    ],
+    "rating": 1591,
+    "themes": [
+      "advantage",
+      "clearance",
+      "discoveredAttack",
+      "discoveredCheck",
+      "endgame",
+      "long",
+      "trappedPiece"
+    ],
+    "popularity": 93,
+    "primaryTheme": "clearance"
+  },
+  {
+    "id": "5gIhc",
+    "fen": "r2b1r1k/pp4pp/3p4/6P1/2Q1pBq1/8/PPP4P/R4R1K b - - 3 21",
+    "moves": [
+      "f8f4",
+      "f1f4",
+      "g4f4",
+      "a1f1"
+    ],
+    "rating": 1145,
+    "themes": [
+      "advantage",
+      "clearance",
+      "middlegame",
+      "short"
+    ],
+    "popularity": 92,
+    "primaryTheme": "clearance"
+  },
+  {
+    "id": "5get8",
+    "fen": "6n1/p1p4k/1pnp3p/5p2/6p1/2PNRbq1/PPQ3P1/6K1 b - - 0 30",
+    "moves": [
+      "f5f4",
+      "d3f4",
+      "h7h8",
+      "c2f5",
+      "g3f4",
+      "f5f4"
+    ],
+    "rating": 2811,
+    "themes": [
+      "clearance",
+      "crushing",
+      "discoveredAttack",
+      "discoveredCheck",
+      "long",
+      "middlegame"
+    ],
+    "popularity": 81,
+    "primaryTheme": "clearance"
+  }
+]

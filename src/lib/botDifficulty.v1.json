@@ -1,0 +1,72 @@
+{
+  "version": "1.0.0",
+  "lastModified": "2024-12-21",
+  "description": "Bot difficulty settings for deterministic strength control. Changes to this file should be documented in the changelog.",
+  "changelog": [
+    {
+      "version": "1.0.0",
+      "date": "2024-12-21",
+      "changes": [
+        "Initial versioned config",
+        "Defined 5 difficulty tiers: beginner, intermediate, advanced, master, boss",
+        "Settings based on Stockfish multi-threading, hash tables, and move time"
+      ]
+    }
+  ],
+  "categories": {
+    "beginner": {
+      "threads": 1,
+      "hash": 16,
+      "moveTime": 500,
+      "multiPV": 6,
+      "description": "Very weak play with many candidate moves to choose from, enabling frequent mistakes"
+    },
+    "intermediate": {
+      "threads": 2,
+      "hash": 64,
+      "moveTime": 1500,
+      "multiPV": 5,
+      "description": "Moderate strength with reasonable think time and good candidate variety"
+    },
+    "advanced": {
+      "threads": 4,
+      "hash": 128,
+      "moveTime": 3000,
+      "multiPV": 3,
+      "description": "Strong play with focused candidate selection and longer analysis"
+    },
+    "master": {
+      "threads": 8,
+      "hash": 256,
+      "moveTime": 5000,
+      "multiPV": 3,
+      "description": "Near-optimal play with deep analysis and minimal candidate variance"
+    },
+    "boss": {
+      "threads": 8,
+      "hash": 512,
+      "moveTime": 10000,
+      "multiPV": 2,
+      "description": "Maximum strength for boss encounters (Marco). Very deep analysis, minimal mistakes"
+    },
+    "special": {
+      "threads": 4,
+      "hash": 128,
+      "moveTime": 2000,
+      "multiPV": 4,
+      "description": "Custom settings for special event or unique behavior bots (Buddy, Jakie)"
+    }
+  },
+  "units": {
+    "threads": "count",
+    "hash": "megabytes",
+    "moveTime": "milliseconds",
+    "multiPV": "count (candidate moves)"
+  },
+  "notes": [
+    "Higher multiPV = more candidate moves = more variance = weaker effective play",
+    "Lower moveTime = less calculation = weaker play",
+    "Threads and hash affect calculation depth within the time limit",
+    "Boss tier uses 10s think time for truly challenging endgame encounters"
+  ]
+}

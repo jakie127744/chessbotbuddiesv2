@@ -1,0 +1,1113 @@
+[
+  {
+    "id": "5SvY7",
+    "fen": "5rk1/p2p1N1p/b3pQp1/3pP3/8/8/q1r2PPP/1RR3K1 b - - 0 21",
+    "moves": [
+      "f8f7",
+      "b1b8",
+      "a6c8",
+      "b8c8",
+      "c2c8",
+      "c1c8",
+      "f7f8",
+      "c8f8"
+    ],
+    "rating": 1273,
+    "themes": [
+      "mate",
+      "mateIn4",
+      "middlegame",
+      "veryLong",
+      "xRayAttack"
+    ],
+    "popularity": 87,
+    "primaryTheme": "xRayAttack"
+  },
+  {
+    "id": "5Syy6",
+    "fen": "4r2k/pp4pp/2p2n2/5b2/2B2q2/2N1P2P/PPP1Q1P1/3R3K b - - 0 23",
+    "moves": [
+      "e8e3",
+      "d1d8",
+      "f6e8",
+      "d8e8",
+      "e3e8",
+      "e2e8"
+    ],
+    "rating": 897,
+    "themes": [
+      "backRankMate",
+      "long",
+      "mate",
+      "mateIn3",
+      "middlegame",
+      "xRayAttack"
+    ],
+    "popularity": 98,
+    "primaryTheme": "xRayAttack"
+  },
+  {
+    "id": "5Vc8P",
+    "fen": "3r1Q2/1k2p1Qp/p1b3p1/qp1n2N1/6B1/8/PPP2PPP/1K1R4 w - - 5 25",
+    "moves": [
+      "d1d5",
+      "a5e1",
+      "g4d1",
+      "e1d1",
+      "d5d1",
+      "d8d1"
+    ],
+    "rating": 1638,
+    "themes": [
+      "backRankMate",
+      "long",
+      "mate",
+      "mateIn3",
+      "middlegame",
+      "xRayAttack"
+    ],
+    "popularity": 100,
+    "primaryTheme": "xRayAttack"
+  },
+  {
+    "id": "5WFu9",
+    "fen": "1k3b2/pppQp1p1/2n4r/6q1/6pp/2B4P/PPP2PP1/3R2K1 b - - 2 22",
+    "moves": [
+      "h6d6",
+      "d7e8",
+      "c6d8",
+      "e8d8",
+      "d6d8",
+      "d1d8"
+    ],
+    "rating": 1851,
+    "themes": [
+      "backRankMate",
+      "fork",
+      "long",
+      "mate",
+      "mateIn3",
+      "middlegame",
+      "xRayAttack"
+    ],
+    "popularity": 88,
+    "primaryTheme": "xRayAttack"
+  },
+  {
+    "id": "5XIHG",
+    "fen": "1Q5k/2pq2pp/3r4/5p2/4pP2/4P3/rP4PP/2KR3R b - - 1 25",
+    "moves": [
+      "d7d8",
+      "b8d8",
+      "d6d8",
+      "d1d8"
+    ],
+    "rating": 749,
+    "themes": [
+      "backRankMate",
+      "endgame",
+      "mate",
+      "mateIn2",
+      "short",
+      "xRayAttack"
+    ],
+    "popularity": 100,
+    "primaryTheme": "xRayAttack"
+  },
+  {
+    "id": "5XgUK",
+    "fen": "r3r3/p1k2p2/2p5/q7/8/6RQ/PPP2PPP/4R1K1 w - - 5 25",
+    "moves": [
+      "g3e3",
+      "a5e1",
+      "e3e1",
+      "e8e1"
+    ],
+    "rating": 1179,
+    "themes": [
+      "backRankMate",
+      "endgame",
+      "mate",
+      "mateIn2",
+      "short",
+      "xRayAttack"
+    ],
+    "popularity": 84,
+    "primaryTheme": "xRayAttack"
+  },
+  {
+    "id": "5Yg4e",
+    "fen": "r4r2/ppp1k1p1/7p/3Pp3/2Pb4/3P1BPq/PPQ4P/R1B2R1K w - - 1 22",
+    "moves": [
+      "f3g2",
+      "f8f1",
+      "g2f1",
+      "h3f1"
+    ],
+    "rating": 1040,
+    "themes": [
+      "kingsideAttack",
+      "mate",
+      "mateIn2",
+      "middlegame",
+      "short",
+      "xRayAttack"
+    ],
+    "popularity": 86,
+    "primaryTheme": "xRayAttack"
+  },
+  {
+    "id": "5Yxk4",
+    "fen": "4Q3/p2K4/4R3/3P4/q7/4r3/4k3/8 w - - 1 57",
+    "moves": [
+      "d7d6",
+      "a4e8",
+      "e6e8",
+      "e3e8"
+    ],
+    "rating": 1627,
+    "themes": [
+      "crushing",
+      "endgame",
+      "short",
+      "xRayAttack"
+    ],
+    "popularity": 85,
+    "primaryTheme": "xRayAttack"
+  },
+  {
+    "id": "5YzeZ",
+    "fen": "6rk/5p2/p1p4q/4b3/4B3/3RR2p/PPQ1NPr1/7K w - - 6 28",
+    "moves": [
+      "e3h3",
+      "g2h2",
+      "h3h2",
+      "h6h2"
+    ],
+    "rating": 1657,
+    "themes": [
+      "mate",
+      "mateIn2",
+      "middlegame",
+      "short",
+      "xRayAttack"
+    ],
+    "popularity": 97,
+    "primaryTheme": "xRayAttack"
+  },
+  {
+    "id": "5a1Xg",
+    "fen": "4r1k1/1p3p1p/p3nPpQ/5b2/5P2/5BB1/PP1q2PP/4R2K w - - 3 28",
+    "moves": [
+      "e1e6",
+      "d2c1",
+      "f3d1",
+      "c1d1",
+      "g3e1",
+      "d1e1",
+      "e6e1",
+      "e8e1"
+    ],
+    "rating": 1613,
+    "themes": [
+      "backRankMate",
+      "mate",
+      "mateIn4",
+      "middlegame",
+      "veryLong",
+      "xRayAttack"
+    ],
+    "popularity": 87,
+    "primaryTheme": "xRayAttack"
+  },
+  {
+    "id": "5ajCy",
+    "fen": "5b1k/3R2p1/p5Qp/4P3/5P2/4q3/P5PP/2rR3K w - - 3 35",
+    "moves": [
+      "e5e6",
+      "e3e1",
+      "d1e1",
+      "c1e1"
+    ],
+    "rating": 1524,
+    "themes": [
+      "backRankMate",
+      "endgame",
+      "mate",
+      "mateIn2",
+      "sacrifice",
+      "short",
+      "xRayAttack"
+    ],
+    "popularity": 86,
+    "primaryTheme": "xRayAttack"
+  },
+  {
+    "id": "5ciLu",
+    "fen": "3q1rk1/1p3p2/4p1p1/pP1p3p/P1rP1Q1P/8/5PP1/R1R3K1 b - - 1 32",
+    "moves": [
+      "d8c7",
+      "f4c7",
+      "c4c7",
+      "c1c7"
+    ],
+    "rating": 1092,
+    "themes": [
+      "crushing",
+      "endgame",
+      "master",
+      "short",
+      "xRayAttack"
+    ],
+    "popularity": 89,
+    "primaryTheme": "xRayAttack"
+  },
+  {
+    "id": "5d4dN",
+    "fen": "1r4k1/5p1p/6p1/4q3/p7/QB4P1/1P5P/K2R4 b - - 0 40",
+    "moves": [
+      "b8b3",
+      "d1d8",
+      "g8g7",
+      "a3f8",
+      "g7f6",
+      "f8h8",
+      "f6f5",
+      "g3g4",
+      "f5f4",
+      "d8d4",
+      "e5d4",
+      "h8d4"
+    ],
+    "rating": 1782,
+    "themes": [
+      "advantage",
+      "endgame",
+      "veryLong",
+      "xRayAttack"
+    ],
+    "popularity": 100,
+    "primaryTheme": "xRayAttack"
+  },
+  {
+    "id": "5dhcj",
+    "fen": "6kn/1p3ppp/q7/3pPN2/3P4/2P2Q2/6PP/r3R2K w - - 1 29",
+    "moves": [
+      "f3g3",
+      "a6f1",
+      "e1f1",
+      "a1f1"
+    ],
+    "rating": 1436,
+    "themes": [
+      "backRankMate",
+      "endgame",
+      "mate",
+      "mateIn2",
+      "sacrifice",
+      "short",
+      "xRayAttack"
+    ],
+    "popularity": 84,
+    "primaryTheme": "xRayAttack"
+  },
+  {
+    "id": "5e1Qm",
+    "fen": "1R1r2k1/p4ppp/6q1/4Q3/8/PP5r/5PP1/5NK1 b - - 1 27",
+    "moves": [
+      "h3d3",
+      "e5e8",
+      "d8e8",
+      "b8e8"
+    ],
+    "rating": 1440,
+    "themes": [
+      "backRankMate",
+      "endgame",
+      "mate",
+      "mateIn2",
+      "sacrifice",
+      "short",
+      "xRayAttack"
+    ],
+    "popularity": 72,
+    "primaryTheme": "xRayAttack"
+  },
+  {
+    "id": "5fKZp",
+    "fen": "5Q2/bp2Nppk/p1p5/P6r/1P6/2q2PP1/4R1K1/8 b - - 0 32",
+    "moves": [
+      "c3d4",
+      "f8g8",
+      "h7h6",
+      "e2e6",
+      "f7e6",
+      "g8e6",
+      "d4f6",
+      "e7g8"
+    ],
+    "rating": 2045,
+    "themes": [
+      "crushing",
+      "endgame",
+      "sacrifice",
+      "veryLong",
+      "xRayAttack"
+    ],
+    "popularity": 58,
+    "primaryTheme": "xRayAttack"
+  },
+  {
+    "id": "5g0v6",
+    "fen": "1r3k2/RPr4p/6p1/3p4/2p1pP2/2P4P/5P2/1R4K1 b - - 0 38",
+    "moves": [
+      "f8e8",
+      "a7a8",
+      "c7b7",
+      "a8b8",
+      "b7b8",
+      "b1b8"
+    ],
+    "rating": 1452,
+    "themes": [
+      "crushing",
+      "endgame",
+      "exposedKing",
+      "long",
+      "master",
+      "rookEndgame",
+      "xRayAttack"
+    ],
+    "popularity": 81,
+    "primaryTheme": "xRayAttack"
+  },
+  {
+    "id": "5g24W",
+    "fen": "5rk1/ppp3p1/2b4p/5R1Q/2P5/3B4/P1P3PP/4q2K w - - 1 24",
+    "moves": [
+      "d3f1",
+      "e1f1",
+      "f5f1",
+      "f8f1"
+    ],
+    "rating": 1555,
+    "themes": [
+      "endgame",
+      "mate",
+      "mateIn2",
+      "short",
+      "xRayAttack"
+    ],
+    "popularity": 89,
+    "primaryTheme": "xRayAttack"
+  },
+  {
+    "id": "5hKzr",
+    "fen": "2k2r2/ppp1n2p/4p1p1/2R2q2/3Q4/1B2n3/P4rPP/5RK1 w - - 0 27",
+    "moves": [
+      "c5f5",
+      "f2f1",
+      "f5f1",
+      "f8f1"
+    ],
+    "rating": 1492,
+    "themes": [
+      "mate",
+      "mateIn2",
+      "middlegame",
+      "short",
+      "xRayAttack"
+    ],
+    "popularity": 89,
+    "primaryTheme": "xRayAttack"
+  },
+  {
+    "id": "5kL5a",
+    "fen": "8/6k1/p4pp1/1pPp1q2/3P4/1Q4pr/PP3rR1/R4NK1 w - - 2 36",
+    "moves": [
+      "g2g3",
+      "f2e2",
+      "b3f3",
+      "f5f3",
+      "g3f3",
+      "h3f3"
+    ],
+    "rating": 2236,
+    "themes": [
+      "advantage",
+      "long",
+      "master",
+      "middlegame",
+      "xRayAttack"
+    ],
+    "popularity": 74,
+    "primaryTheme": "xRayAttack"
+  },
+  {
+    "id": "5kyI8",
+    "fen": "1Rr3k1/5ppp/p2Qpq2/8/8/2PbP3/P4PPP/6K1 b - - 1 24",
+    "moves": [
+      "f6c3",
+      "d6d8",
+      "c8d8",
+      "b8d8"
+    ],
+    "rating": 1379,
+    "themes": [
+      "backRankMate",
+      "endgame",
+      "mate",
+      "mateIn2",
+      "sacrifice",
+      "short",
+      "xRayAttack"
+    ],
+    "popularity": 93,
+    "primaryTheme": "xRayAttack"
+  },
+  {
+    "id": "5kyae",
+    "fen": "3r2k1/1Q1n1ppp/p3p3/2q5/8/1B6/PP3PPP/3R2K1 w - - 1 25",
+    "moves": [
+      "d1d7",
+      "c5c1",
+      "b3d1",
+      "c1d1",
+      "d7d1",
+      "d8d1"
+    ],
+    "rating": 1131,
+    "themes": [
+      "backRankMate",
+      "endgame",
+      "long",
+      "mate",
+      "mateIn3",
+      "xRayAttack"
+    ],
+    "popularity": 98,
+    "primaryTheme": "xRayAttack"
+  },
+  {
+    "id": "5m2LM",
+    "fen": "2r3k1/p1r2pp1/Qpnqp2p/3p3P/3Pn3/P3PN2/1P3PP1/2R1BRK1 b - - 2 20",
+    "moves": [
+      "c6b8",
+      "a6c8",
+      "c7c8",
+      "c1c8"
+    ],
+    "rating": 1389,
+    "themes": [
+      "advantage",
+      "middlegame",
+      "short",
+      "xRayAttack"
+    ],
+    "popularity": 97,
+    "primaryTheme": "xRayAttack"
+  },
+  {
+    "id": "5mjLW",
+    "fen": "1b2r2k/2q1r1pp/5p2/1Q6/3P4/2P1RNP1/PP5P/4R1K1 b - - 0 29",
+    "moves": [
+      "e7e3",
+      "b5e8",
+      "e3e8",
+      "e1e8"
+    ],
+    "rating": 1393,
+    "themes": [
+      "backRankMate",
+      "mate",
+      "mateIn2",
+      "middlegame",
+      "short",
+      "xRayAttack"
+    ],
+    "popularity": 92,
+    "primaryTheme": "xRayAttack"
+  },
+  {
+    "id": "5o2Ku",
+    "fen": "Rr5k/1Pq3p1/4R2p/5p1P/3r1P2/1Q4PK/3p4/8 b - - 1 55",
+    "moves": [
+      "d2d1q",
+      "e6e8",
+      "b8e8",
+      "a8e8",
+      "h8h7",
+      "b3g8"
+    ],
+    "rating": 1598,
+    "themes": [
+      "long",
+      "master",
+      "mate",
+      "mateIn3",
+      "middlegame",
+      "xRayAttack"
+    ],
+    "popularity": 94,
+    "primaryTheme": "xRayAttack"
+  },
+  {
+    "id": "5ogfI",
+    "fen": "r1r3k1/5ppp/2B5/2Q5/P3P3/1q3P1P/2R1K1P1/8 w - - 2 31",
+    "moves": [
+      "c6d5",
+      "b3c2",
+      "c5c2",
+      "c8c2"
+    ],
+    "rating": 1473,
+    "themes": [
+      "crushing",
+      "endgame",
+      "short",
+      "xRayAttack"
+    ],
+    "popularity": 93,
+    "primaryTheme": "xRayAttack"
+  },
+  {
+    "id": "5pNmZ",
+    "fen": "2Q1r1k1/3n1rpp/p2B4/1p2p2q/1P1pP3/P2P3P/6P1/2R2RK1 b - - 3 24",
+    "moves": [
+      "e8c8",
+      "c1c8",
+      "d7f8",
+      "c8f8",
+      "f7f8",
+      "f1f8"
+    ],
+    "rating": 1355,
+    "themes": [
+      "kingsideAttack",
+      "long",
+      "mate",
+      "mateIn3",
+      "middlegame",
+      "operaMate",
+      "xRayAttack"
+    ],
+    "popularity": 95,
+    "primaryTheme": "xRayAttack"
+  },
+  {
+    "id": "5pk2M",
+    "fen": "3rr1k1/3P3p/1p4p1/p4p2/5N2/1n3P1P/3R1P2/2R3K1 b - - 0 33",
+    "moves": [
+      "e8e7",
+      "c1c8",
+      "e7d7",
+      "c8d8",
+      "d7d8",
+      "d2d8"
+    ],
+    "rating": 1110,
+    "themes": [
+      "advantage",
+      "endgame",
+      "long",
+      "xRayAttack"
+    ],
+    "popularity": 98,
+    "primaryTheme": "xRayAttack"
+  },
+  {
+    "id": "5pkCJ",
+    "fen": "r2qk2r/1p1b1ppp/2nQ1b2/p1P5/P3P3/1NN5/1PP2KPP/R4B1R w kq - 1 13",
+    "moves": [
+      "c3d5",
+      "f6e5",
+      "d5c7",
+      "d8c7",
+      "d6c7",
+      "e5c7"
+    ],
+    "rating": 1819,
+    "themes": [
+      "advantage",
+      "long",
+      "master",
+      "middlegame",
+      "xRayAttack"
+    ],
+    "popularity": 96,
+    "primaryTheme": "xRayAttack"
+  },
+  {
+    "id": "5qhYX",
+    "fen": "1Rr4k/3Q1ppp/1R1n4/2qpp3/4n3/4P3/2P2PPP/6K1 b - - 8 31",
+    "moves": [
+      "c5c2",
+      "d7d8",
+      "d6e8",
+      "d8e8",
+      "c8e8",
+      "b8e8"
+    ],
+    "rating": 1980,
+    "themes": [
+      "backRankMate",
+      "long",
+      "mate",
+      "mateIn3",
+      "middlegame",
+      "xRayAttack"
+    ],
+    "popularity": 89,
+    "primaryTheme": "xRayAttack"
+  },
+  {
+    "id": "5qlPq",
+    "fen": "1rr3k1/p3ppbp/3p1np1/8/Rq1BP1bP/1PN2P2/1KPQ4/5B1R b - - 1 18",
+    "moves": [
+      "f6e4",
+      "f3e4",
+      "g7d4",
+      "d2d4",
+      "b4d4",
+      "a4d4"
+    ],
+    "rating": 2484,
+    "themes": [
+      "advantage",
+      "hangingPiece",
+      "long",
+      "middlegame",
+      "xRayAttack"
+    ],
+    "popularity": 83,
+    "primaryTheme": "xRayAttack"
+  },
+  {
+    "id": "5sQp8",
+    "fen": "6rk/4R1r1/p1p4p/1p1p3q/3P4/P2Q1Pbp/1PB3P1/4R1K1 b - - 1 41",
+    "moves": [
+      "g3e1",
+      "d3h7",
+      "g7h7",
+      "e7h7"
+    ],
+    "rating": 1527,
+    "themes": [
+      "kingsideAttack",
+      "mate",
+      "mateIn2",
+      "middlegame",
+      "operaMate",
+      "sacrifice",
+      "short",
+      "xRayAttack"
+    ],
+    "popularity": 94,
+    "primaryTheme": "xRayAttack"
+  },
+  {
+    "id": "5tUPH",
+    "fen": "Rr4k1/1Q3ppp/4p3/4q3/8/2r4P/5PP1/5RK1 b - - 4 24",
+    "moves": [
+      "c3c8",
+      "b7c8",
+      "b8c8",
+      "a8c8"
+    ],
+    "rating": 1447,
+    "themes": [
+      "backRankMate",
+      "endgame",
+      "mate",
+      "mateIn2",
+      "short",
+      "xRayAttack"
+    ],
+    "popularity": 91,
+    "primaryTheme": "xRayAttack"
+  },
+  {
+    "id": "5tmAg",
+    "fen": "r5k1/p3Qp2/1p3q2/2pr1Pp1/8/P1P5/1P4P1/4RRK1 b - - 1 25",
+    "moves": [
+      "d5f5",
+      "e7f6",
+      "f5f6",
+      "f1f6"
+    ],
+    "rating": 1459,
+    "themes": [
+      "crushing",
+      "endgame",
+      "short",
+      "xRayAttack"
+    ],
+    "popularity": 96,
+    "primaryTheme": "xRayAttack"
+  },
+  {
+    "id": "5uqR7",
+    "fen": "2Q1r2k/4P1pp/3q1p2/8/5r2/2N5/5PPP/4R1K1 b - - 0 28",
+    "moves": [
+      "d6e7",
+      "c8e8",
+      "e7e8",
+      "e1e8"
+    ],
+    "rating": 1416,
+    "themes": [
+      "backRankMate",
+      "endgame",
+      "mate",
+      "mateIn2",
+      "short",
+      "xRayAttack"
+    ],
+    "popularity": 67,
+    "primaryTheme": "xRayAttack"
+  },
+  {
+    "id": "5vUYm",
+    "fen": "4r1k1/1p1R1ppp/p7/8/8/1P3Q2/P4PPP/2r3K1 w - - 1 25",
+    "moves": [
+      "d7d1",
+      "e8e1",
+      "d1e1",
+      "c1e1"
+    ],
+    "rating": 1072,
+    "themes": [
+      "backRankMate",
+      "endgame",
+      "mate",
+      "mateIn2",
+      "queenRookEndgame",
+      "short",
+      "xRayAttack"
+    ],
+    "popularity": 95,
+    "primaryTheme": "xRayAttack"
+  },
+  {
+    "id": "5ym84",
+    "fen": "r3r1k1/p3Rp1p/5np1/3pB3/2pP2B1/2q2b1Q/P4PPP/4R1K1 w - - 0 31",
+    "moves": [
+      "e5f6",
+      "c3e1",
+      "e7e1",
+      "e8e1"
+    ],
+    "rating": 886,
+    "themes": [
+      "kingsideAttack",
+      "mate",
+      "mateIn2",
+      "middlegame",
+      "short",
+      "xRayAttack"
+    ],
+    "popularity": 70,
+    "primaryTheme": "xRayAttack"
+  },
+  {
+    "id": "5zTAE",
+    "fen": "2r2r1k/p4Rpp/4Q1n1/3P4/2P5/3q4/6PP/5R1K b - - 8 31",
+    "moves": [
+      "f8f7",
+      "e6c8",
+      "g6f8",
+      "c8f8",
+      "f7f8",
+      "f1f8"
+    ],
+    "rating": 1544,
+    "themes": [
+      "backRankMate",
+      "endgame",
+      "hangingPiece",
+      "long",
+      "mate",
+      "mateIn3",
+      "xRayAttack"
+    ],
+    "popularity": 82,
+    "primaryTheme": "xRayAttack"
+  },
+  {
+    "id": "5zmId",
+    "fen": "r1r3k1/3q2p1/5p1p/p1R1p3/1n1pQ3/5P1P/6P1/2R1B1K1 b - - 5 33",
+    "moves": [
+      "c8c5",
+      "e4a8",
+      "d7c8",
+      "a8c8",
+      "c5c8",
+      "c1c8"
+    ],
+    "rating": 1185,
+    "themes": [
+      "advantage",
+      "hangingPiece",
+      "long",
+      "middlegame",
+      "xRayAttack"
+    ],
+    "popularity": 94,
+    "primaryTheme": "xRayAttack"
+  },
+  {
+    "id": "616Dv",
+    "fen": "4r1k1/1b2q2p/p5p1/8/N2R2n1/4RPQ1/PPr3PP/6K1 w - - 0 30",
+    "moves": [
+      "e3e7",
+      "c2c1",
+      "d4d1",
+      "c1d1",
+      "g3e1",
+      "d1e1",
+      "e7e1",
+      "e8e1"
+    ],
+    "rating": 1065,
+    "themes": [
+      "master",
+      "mate",
+      "mateIn4",
+      "middlegame",
+      "veryLong",
+      "xRayAttack"
+    ],
+    "popularity": 74,
+    "primaryTheme": "xRayAttack"
+  },
+  {
+    "id": "62pP6",
+    "fen": "7k/1b2q1rp/p3pQ2/1p2P3/5P2/2p3PR/P1B4P/6K1 b - - 1 32",
+    "moves": [
+      "b7d5",
+      "h3h7",
+      "h8g8",
+      "f6e7",
+      "g7e7",
+      "h7e7"
+    ],
+    "rating": 1796,
+    "themes": [
+      "crushing",
+      "endgame",
+      "long",
+      "xRayAttack"
+    ],
+    "popularity": 85,
+    "primaryTheme": "xRayAttack"
+  },
+  {
+    "id": "63mwv",
+    "fen": "8/8/4k3/pb1p2P1/4PK2/1B6/8/8 b - - 0 47",
+    "moves": [
+      "b5c4",
+      "e4d5",
+      "c4d5",
+      "b3d5",
+      "e6d5",
+      "g5g6",
+      "d5e6",
+      "f4g5",
+      "e6e7",
+      "g5h6",
+      "a5a4",
+      "g6g7",
+      "e7f7",
+      "h6h7"
+    ],
+    "rating": 2672,
+    "themes": [
+      "advancedPawn",
+      "bishopEndgame",
+      "crushing",
+      "defensiveMove",
+      "endgame",
+      "veryLong",
+      "xRayAttack"
+    ],
+    "popularity": 99,
+    "primaryTheme": "xRayAttack"
+  },
+  {
+    "id": "66AYW",
+    "fen": "6r1/1pk2p2/2q1pP1b/2P1P3/1Q1pN2r/p2P2p1/P1R3B1/1R4K1 w - - 2 34",
+    "moves": [
+      "e4d6",
+      "h6e3",
+      "g1f1",
+      "h4h1",
+      "g2h1",
+      "c6h1"
+    ],
+    "rating": 1823,
+    "themes": [
+      "crushing",
+      "exposedKing",
+      "kingsideAttack",
+      "long",
+      "middlegame",
+      "sacrifice",
+      "xRayAttack"
+    ],
+    "popularity": 92,
+    "primaryTheme": "xRayAttack"
+  },
+  {
+    "id": "68UHg",
+    "fen": "4r1k1/5ppp/p7/1bp3P1/4QP1P/P5K1/1q6/3RR3 b - - 1 26",
+    "moves": [
+      "e8e4",
+      "d1d8",
+      "b5e8",
+      "d8e8",
+      "e4e8",
+      "e1e8"
+    ],
+    "rating": 1363,
+    "themes": [
+      "backRankMate",
+      "endgame",
+      "long",
+      "mate",
+      "mateIn3",
+      "xRayAttack"
+    ],
+    "popularity": 56,
+    "primaryTheme": "xRayAttack"
+  },
+  {
+    "id": "6A7SU",
+    "fen": "3r2k1/p4p1p/1pp1p1pP/6Q1/4P3/2qP1P2/P7/3R2K1 b - - 1 27",
+    "moves": [
+      "d8d3",
+      "g5d8",
+      "d3d8",
+      "d1d8"
+    ],
+    "rating": 1689,
+    "themes": [
+      "endgame",
+      "mate",
+      "mateIn2",
+      "sacrifice",
+      "short",
+      "xRayAttack"
+    ],
+    "popularity": 93,
+    "primaryTheme": "xRayAttack"
+  },
+  {
+    "id": "6AUt3",
+    "fen": "6k1/5p2/4p1p1/3p3p/3q4/1Q1R1B2/2P2PPP/r5K1 w - - 2 28",
+    "moves": [
+      "f3d1",
+      "a1d1",
+      "d3d1",
+      "d4d1"
+    ],
+    "rating": 826,
+    "themes": [
+      "backRankMate",
+      "endgame",
+      "mate",
+      "mateIn2",
+      "short",
+      "xRayAttack"
+    ],
+    "popularity": 83,
+    "primaryTheme": "xRayAttack"
+  },
+  {
+    "id": "6AV8L",
+    "fen": "7k/p4prp/2R1p3/1r6/3p4/b4Q1P/q4PP1/2R3K1 b - - 0 32",
+    "moves": [
+      "b5c5",
+      "c6c8",
+      "c5c8",
+      "c1c8",
+      "a3f8",
+      "c8f8",
+      "g7g8",
+      "f3f6"
+    ],
+    "rating": 1503,
+    "themes": [
+      "mate",
+      "mateIn4",
+      "middlegame",
+      "veryLong",
+      "xRayAttack"
+    ],
+    "popularity": 96,
+    "primaryTheme": "xRayAttack"
+  },
+  {
+    "id": "6AXX8",
+    "fen": "2Q5/5p1k/7p/3pr3/P7/4PqPK/1P3P2/5R2 w - - 3 36",
+    "moves": [
+      "c8g4",
+      "e5h5",
+      "g4h5",
+      "f3h5"
+    ],
+    "rating": 1232,
+    "themes": [
+      "advantage",
+      "endgame",
+      "short",
+      "xRayAttack"
+    ],
+    "popularity": 77,
+    "primaryTheme": "xRayAttack"
+  },
+  {
+    "id": "6ArCk",
+    "fen": "4r1k1/ppp3pp/4b3/3pR3/q2P4/B3Q3/P4PPP/6K1 w - - 7 22",
+    "moves": [
+      "e5e6",
+      "a4d1",
+      "e3e1",
+      "d1e1",
+      "e6e1",
+      "e8e1"
+    ],
+    "rating": 1065,
+    "themes": [
+      "backRankMate",
+      "endgame",
+      "long",
+      "mate",
+      "mateIn3",
+      "xRayAttack"
+    ],
+    "popularity": 84,
+    "primaryTheme": "xRayAttack"
+  },
+  {
+    "id": "6EsHn",
+    "fen": "Q5k1/1pq2ppp/p3b3/8/2r1p3/P4B1P/1P3PP1/3R2K1 b - - 3 27",
+    "moves": [
+      "c7c8",
+      "d1d8",
+      "c8d8",
+      "a8d8"
+    ],
+    "rating": 1089,
+    "themes": [
+      "backRankMate",
+      "endgame",
+      "fork",
+      "mate",
+      "mateIn2",
+      "short",
+      "xRayAttack"
+    ],
+    "popularity": 67,
+    "primaryTheme": "xRayAttack"
+  }
+]

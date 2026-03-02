@@ -1,0 +1,243 @@
+:root {
+  --bg-color: #0c1222;
+  --sidebar-bg: #1a2744;
+  --text-primary: #ffffff;
+  --text-secondary: #a8b4ce;
+  --accent: #5ec2f2;
+  --btn-hover: #2d3e63;
+  --btn-active: #85c942;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Nunito", sans-serif;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-primary);
+  overflow: hidden;
+}
+
+.simulator-container {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+}
+
+/* Sidebar Styling */
+.sidebar {
+  width: 320px;
+  background-color: var(--sidebar-bg);
+  border-right: 1px solid #3a4a6e;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  z-index: 100;
+}
+
+.logo {
+  display: flex;
+  items-center: center;
+  gap: 0.75rem;
+  margin-bottom: 0.5rem;
+}
+
+.logo .emoji {
+  font-size: 2rem;
+}
+
+.logo h1 {
+  font-size: 1.5rem;
+  font-weight: 900;
+}
+
+.control-group h3 {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05rem;
+  color: var(--text-secondary);
+  margin-bottom: 1rem;
+}
+
+.options {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.option-btn {
+  background: transparent;
+  border: 2px solid #3a4a6e;
+  color: var(--text-secondary);
+  padding: 0.75rem 1rem;
+  border-radius: 0.75rem;
+  cursor: pointer;
+  text-align: left;
+  font-weight: 700;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.option-btn:hover {
+  background: var(--btn-hover);
+  color: white;
+}
+
+.option-btn.active {
+  background: var(--accent);
+  color: white;
+  border-color: var(--accent);
+}
+
+.option-btn .icon {
+  font-size: 1.25rem;
+}
+
+#url-input {
+  width: 100%;
+  background: #0c1222;
+  border: 1px solid #3a4a6e;
+  color: white;
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+#refresh-btn {
+  width: 100%;
+  background: #3a4a6e;
+  border: none;
+  color: white;
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+#refresh-btn:hover {
+  background: var(--btn-hover);
+}
+
+.footer {
+  margin-top: auto;
+  font-size: 0.75rem;
+}
+
+.back-link {
+  display: block;
+  margin-top: 0.5rem;
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: bold;
+}
+
+/* Stage Styling */
+.stage {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(circle at center, #1a2744 0%, #0c1222 100%);
+  padding: 50px;
+  position: relative;
+}
+
+#device-wrapper {
+  position: relative;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Device Frames - Ratios */
+.iphone.portrait {
+  width: 440px;
+  height: 860px;
+}
+.iphone.landscape {
+  width: 860px;
+  height: 440px;
+}
+
+.galaxy.portrait {
+  width: 440px;
+  height: 880px;
+}
+.galaxy.landscape {
+  width: 880px;
+  height: 440px;
+}
+
+.device-frame {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 20;
+}
+
+.device-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.screen {
+  position: absolute;
+  background: black;
+  overflow: hidden;
+  z-index: 10;
+}
+
+/* IPhone Portrait Inner Screen */
+.iphone.portrait .screen {
+  top: 2%;
+  left: 7%;
+  width: 86%;
+  height: 96%;
+  border-radius: 50px;
+}
+
+/* IPhone Landscape Inner Screen */
+.iphone.landscape .screen {
+  top: 7%;
+  left: 2%;
+  width: 96%;
+  height: 86%;
+  border-radius: 50px;
+}
+
+/* Galaxy Portrait Inner Screen */
+.galaxy.portrait .screen {
+  top: 1.5%;
+  left: 3%;
+  width: 94%;
+  height: 97%;
+  border-radius: 10px;
+}
+
+/* Galaxy Landscape Inner Screen */
+.galaxy.landscape .screen {
+  top: 3%;
+  left: 1.5%;
+  width: 97%;
+  height: 94%;
+  border-radius: 10px;
+}
+
+#app-iframe {
+  width: 100%;
+  height: 100%;
+  background: #0f1729;
+}
+
+/* Rotate Animation Helper */
+.landscape .device-frame img {
+  transform: rotate(-90deg);
+}

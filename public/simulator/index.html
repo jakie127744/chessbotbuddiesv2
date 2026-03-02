@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ChessBotBuddies Mobile Simulator</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="simulator-container">
+      <!-- Controls Sidebar -->
+      <div class="sidebar">
+        <div class="logo">
+          <span class="emoji">🤖</span>
+          <h1>Simulator</h1>
+        </div>
+
+        <div class="control-group">
+          <h3>Device</h3>
+          <div class="options">
+            <button class="option-btn active" data-device="iphone">
+              <span class="icon"></span> Apple iPhone
+            </button>
+            <button class="option-btn" data-device="galaxy">
+              <span class="icon">S</span> Samsung Galaxy
+            </button>
+          </div>
+        </div>
+
+        <div class="control-group">
+          <h3>Orientation</h3>
+          <div class="options">
+            <button class="option-btn active" data-orientation="portrait">
+              Portrait
+            </button>
+            <button class="option-btn" data-orientation="landscape">
+              Landscape
+            </button>
+          </div>
+        </div>
+
+        <div class="control-group">
+          <h3>Target URL</h3>
+          <input
+            type="text"
+            id="url-input"
+            value="/"
+            placeholder="Enter URL (e.g. /)"
+          />
+          <button id="refresh-btn">Refresh App</button>
+        </div>
+
+        <div class="footer">
+          <p>Testing ChessBotBuddies</p>
+          <a href="/" class="back-link">← Back to Main App</a>
+        </div>
+      </div>
+
+      <!-- Simulator Stage -->
+      <div class="stage">
+        <div id="device-wrapper" class="iphone portrait">
+          <div class="device-frame">
+            <img id="frame-img" src="assets/iphone.png" alt="Device Frame" />
+          </div>
+          <div class="screen">
+            <iframe id="app-iframe" src="/" frameborder="0"></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>

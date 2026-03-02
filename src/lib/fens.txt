@@ -1,0 +1,11 @@
+Diagram 1 (After 11...Be7):
+r2qk2r/1b1nbppp/p1p1pn2/1p6/P2P4/2NBPN2/1PQ2PPP/R1B2RK1 w kq - 2 12
+
+Diagram 2 (After 19.Bxb4):
+2r1k2r/1b2bppp/pq2p3/1p6/1B1P4/3BPN2/1P2QPPP/R2R2K1 b k - 0 19
+
+Diagram 3 (After 21.Qh5):
+4k2r/1br2ppp/pq2p3/1p2N2Q/1b1P4/3BP3/1P3PPP/R2R2K1 b k - 3 21
+
+Final Position (After 24...Rxc1):
+4k2r/1b3pbp/pq2p1p1/1p2N3/3P1Q2/3BP3/1P3PPP/2rR2K1 w k - 0 25

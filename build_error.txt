@@ -1,0 +1,54 @@
+
+> chess-app@0.1.0 build
+> next build
+
+Γû▓ Next.js 16.1.6 (Turbopack)
+- Environments: .env.local
+
+  Creating an optimized production build ...
+Γ£ô Compiled successfully in 5.6s
+  Running TypeScript ...
+  Collecting page data using 11 workers ...
+  Generating static pages using 11 workers (0/64) ...
+  Generating static pages using 11 workers (16/64) 
+  Generating static pages using 11 workers (32/64) 
+  Generating static pages using 11 workers (48/64) 
+Γ£ô Generating static pages using 11 workers (64/64) in 1719.8ms
+  Finalizing page optimization ...
+
+Route (app)
+Γöî Γùï /
+Γö£ Γùï /_not-found
+Γö£ Γùï /about
+Γö£ Γùï /analysis
+Γö£ Γùï /endgame
+Γö£ Γùï /help
+Γö£ Γùï /history
+Γö£ Γùï /home
+Γö£ Γùï /leaderboard
+Γö£ Γùï /learn
+Γö£ Γùï /news
+Γö£ ΓùÅ /news/[slug]
+Γöé Γö£ /news/bobby-fischer-childhood
+Γöé Γö£ /news/phiona-mutesi-childhood
+Γöé Γö£ /news/jeff-sarwer-childhood
+Γöé Γöö [+35 more paths]
+Γö£ Γùï /opening-trainer-demo
+Γö£ Γùï /openings
+Γö£ Γùï /openings/shotgun
+Γö£ Γùï /play
+Γö£ Γùï /privacy
+Γö£ Γùï /profile
+Γö£ Γùï /puzzles
+Γö£ Γùï /puzzles/sprint
+Γö£ Γùï /puzzles/training
+Γö£ Γùï /review
+Γö£ Γùï /settings
+Γö£ Γùï /terms
+Γö£ Γùï /training
+Γöö Γùï /training-dashboard
+
+
+Γùï  (Static)  prerendered as static content
+ΓùÅ  (SSG)     prerendered as static HTML (uses generateStaticParams)
+

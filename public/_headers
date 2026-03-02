@@ -1,0 +1,6 @@
+/*
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=()
+  X-XSS-Protection: 1; mode=block
+  Cross-Origin-Resource-Policy: same-origin
