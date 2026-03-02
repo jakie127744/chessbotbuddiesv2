@@ -310,7 +310,11 @@ function filterRepertoireByRating(repertoire: OpeningVariation[], elo: number, t
  */
 async function getBuddyMove(fen: string): Promise<{ move: string; engine: string } | null> {
   // Use the Hugging Face Space URL provided by user
-  const BUDDY_API_URL = process.env.NEXT_PUBLIC_BUDDY_API_URL || 'https://chessbotbuddies-chessbotbuddy-v2.hf.space/move';
+    const BUDDY_API_URL = process.env.NEXT_PUBLIC_BUDDY_API_URL;
+
+    if (!BUDDY_API_URL) {
+        throw new Error('NEXT_PUBLIC_BUDDY_API_URL is not defined. Set it in your environment variables.');
+    }
   
   try {
     const response = await fetch(BUDDY_API_URL, {

@@ -6,10 +6,10 @@ import { useSearchParams, useRouter } from 'next/navigation';
 import { Target, Book, LayoutGrid, Trophy, Puzzle } from 'lucide-react';
 import { Chess } from 'chess.js';
 import { PuzzleTrainer } from '@/redesign/components/PuzzleTrainer';
-import EndgameTrainer from '../../components/EndgameTrainer';
-import { TutorialPractice } from '../../components/TutorialPractice';
-import { LessonPath } from '../../components/LessonPath';
-import { LessonPlayer } from '../../components/LessonPlayer';
+import EndgameTrainer from '@/components/EndgameTrainer';
+import { TutorialPractice } from '@/components/TutorialPractice';
+import { LessonPath } from '@/components/LessonPath';
+import { LessonPlayer } from '@/components/LessonPlayer';
 import { LessonNode } from '@/lib/lesson-data';
 import { useRewards } from '@/contexts/RewardsContext';
 
