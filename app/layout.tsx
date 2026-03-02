@@ -1,5 +1,5 @@
 import { Inter, Lexend } from 'next/font/google';
-import '@/app/globals.css';
+import './globals.css';
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
 const lexend = Lexend({ subsets: ['latin'], variable: '--font-lexend' });
