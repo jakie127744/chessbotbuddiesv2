@@ -103,4 +103,10 @@ function TrainingHubContent() {
   );
 }
 
-// ...existing code...
+export default function TrainingPage() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <TrainingHubContent />
+    </Suspense>
+  );
+}
