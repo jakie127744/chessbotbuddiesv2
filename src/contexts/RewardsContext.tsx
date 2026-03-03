@@ -348,9 +348,9 @@ export function RewardsProvider({ children }: { children: React.ReactNode }) {
                             minigameHighScores: userData.minigameHighScores ?? {},
                             achievements: userData.achievements ?? {},
                             activityLog: userData.activityLog ?? [],
-                            dailyQuests: userData.dailyQuests ?? userData.daily_quests ?? [],
+                            dailyQuests: userData.dailyQuests ?? [],
                             streak: userData.streak ?? 0,
-                            lastActiveDate: userData.lastActiveDate ?? userData.last_active_date ?? undefined,
+                            lastActiveDate: userData.lastActiveDate ?? undefined,
                         };
 
                         persistProfileLocally(profile);
