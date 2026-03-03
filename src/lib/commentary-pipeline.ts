@@ -28,6 +28,7 @@ import { analyzePosition as analyzePositional } from './positional-analyzer';
 import { UserLearningProfile, getUserProfile, updateUserProfile, getPersonalizedAdvice } from './user-learning-profile';
 import { NarrativeArc, detectNarrativeOpportunity, progressNarrative, getNarrativeCommentaryTrigger } from './narrative-engine';
 import { AnalyzedMove } from './analysis-utils';
+import { TacticalPattern } from './tactical-detector';
 
 // ============================================================================
 // INTERFACES
@@ -181,6 +182,7 @@ export interface CommentaryMeta {
   triggers: string[];
   explanation: string;
   evalDrop?: number;
+  tactic?: TacticalPattern;
 }
 
 /** Final Pipeline Output */
@@ -576,12 +578,17 @@ export function detectEvents(snapshot: CommentarySnapshot): DetectedEvent[] {
     // SKIP if move count is low (< 6) to avoid premature warnings
     if (snapshot.moveCount >= 6) {
       const tactics = detectTacticalPatterns(game, lastMove);
-      for (const tactic of tactics) {
-        if (tactic.type === 'fork') events.push('TACTICAL_FORK');
-        if (tactic.type === 'royal_fork') events.push('TACTICAL_FORK');
-        if (tactic.type === 'pin') events.push('TACTICAL_PIN');
-        if (tactic.type === 'skewer') events.push('TACTICAL_SKEWER');
-        if (tactic.type === 'discovered_attack') events.push('TACTICAL_DISCOVERED_ATTACK');
+      if (tactics.length > 0) {
+        // Store the strongest/first tactic in snapshot for building result later
+        // Note: we can't easily add it to snapshot here as it's a frozen interface, 
+        // but we can add those events.
+        for (const tactic of tactics) {
+          if (tactic.type === 'fork') events.push('TACTICAL_FORK');
+          if (tactic.type === 'royal_fork') events.push('TACTICAL_FORK');
+          if (tactic.type === 'pin') events.push('TACTICAL_PIN');
+          if (tactic.type === 'skewer') events.push('TACTICAL_SKEWER');
+          if (tactic.type === 'discovered_attack') events.push('TACTICAL_DISCOVERED_ATTACK');
+        }
       }
     }
 
@@ -1032,7 +1039,8 @@ function getDefaultText(intent: CommentaryIntent): string {
 export function buildResult(
   candidate: ScoredCandidate,
   text: string,
-  evalDrop?: number
+  evalDrop?: number,
+  tactic?: TacticalPattern
 ): CommentaryResult {
   const triggerNames = candidate.triggers.map((t) =>
     t.replace(/_/g, ' ').toLowerCase()
@@ -1050,6 +1058,7 @@ export function buildResult(
       triggers: triggerNames,
       explanation,
       evalDrop,
+      tactic,
     },
   };
 }
@@ -1108,15 +1117,21 @@ export function generateCommentary(
   // Calculate approximate eval drop if available
   let evalDrop = 0;
   if (snapshot.evalBefore !== undefined && snapshot.evalAfter !== undefined) {
-    if (snapshot.userColor === 'w') evalDrop = (snapshot.evalBefore - snapshot.evalAfter); // High to low is bad
-    else evalDrop = (snapshot.evalAfter - snapshot.evalBefore); // Low to high is bad (wait, black values are negative?)
-    // Actually, simple cp difference: 
-    // If white: +100 -> +50 => Drop 50. 
-    // If black: -100 -> -50 => Better. -100 -> -200 => Worse (Drop 100).
-    // Let's assume standard perspective: drop is always "badness"
+    if (snapshot.userColor === 'w') evalDrop = (snapshot.evalBefore - snapshot.evalAfter); 
+    else evalDrop = (snapshot.evalAfter - snapshot.evalBefore); 
   }
 
-  return buildResult(winner, text, evalDrop);
+  // Detect tactics again to find the specific pattern for metadata
+  let tactic: TacticalPattern | undefined;
+  if (winner.intent === 'WinningTactic' && snapshot.lastMove) {
+    const game = new Chess(snapshot.fen);
+    const tactics = detectTacticalPatterns(game, snapshot.lastMove);
+    if (tactics.length > 0) {
+      tactic = tactics[0];
+    }
+  }
+
+  return buildResult(winner, text, evalDrop, tactic);
 }
 
 // ============================================================================
@@ -1193,7 +1208,18 @@ export function processCommentary(
 
   // Stage 8: Build Result
   const evalDrop = evalData ? evalData.evalBefore - evalData.evalAfter : undefined;
-  return buildResult(winner, text, evalDrop);
+  
+  // Detect tactics again to find the specific pattern for metadata
+  let tactic: TacticalPattern | undefined;
+  if (winner.intent === 'WinningTactic' && snapshot.lastMove) {
+    const gameObj = new Chess(snapshot.fen);
+    const tactics = detectTacticalPatterns(gameObj, snapshot.lastMove);
+    if (tactics.length > 0) {
+      tactic = tactics[0];
+    }
+  }
+
+  return buildResult(winner, text, evalDrop, tactic);
 }
 
 // ============================================================================

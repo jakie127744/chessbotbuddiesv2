@@ -13,7 +13,7 @@ import {
   COACHING_DATA
 } from '@/lib/coach-commentary';
 import { processCommentary, processCommentaryWithEval, CommentaryMeta } from '@/lib/commentary-pipeline';
-import { OPENING_FACTS, getGameStartAnnouncements, getNoveltyComment, getJakieFirstMoveReaction, detectOpeningTransposition, getJakieTacticApplause, getJakieEndgameIdentification } from '@/lib/coach-helpers';
+import { OPENING_FACTS, getGameStartAnnouncements, getNoveltyComment, getJakieFirstMoveReaction, detectOpeningTransposition, getJakieTacticApplause, getJakieEndgameIdentification, getJakieOpeningFact } from '@/lib/coach-helpers';
 
 // Sub-components
 import { CoachHeader } from './coach/CoachHeader';
@@ -188,7 +188,15 @@ export function CoachCommentary({ coach, game, lastMove, openingConfig, userColo
       
       // Delay after intro
       setTimeout(() => {
-        setComment({ type: 'opening', text: comment });
+        let finalComment = comment;
+        // 50% chance to add a fun fact if it's Coach Jakie
+        if (coach.id === 'bot-adaptive') {
+          const fact = getJakieOpeningFact(systemId);
+          if (fact) {
+            finalComment = `${comment}\n\n${fact}`;
+          }
+        }
+        setComment({ type: 'opening', text: finalComment });
         setHasAnnouncedOpening(true);
       }, hasIntroduced ? 3000 : 1000);
     }
@@ -361,7 +369,7 @@ export function CoachCommentary({ coach, game, lastMove, openingConfig, userColo
           else if (triggers.includes('TACTICAL_DISCOVERED_ATTACK')) tacticType = 'discovered_attack';
 
           if (tacticType) {
-            const applause = getJakieTacticApplause(tacticType);
+            const applause = getJakieTacticApplause(tacticType, result.meta?.tactic);
             addToHistory(applause);
             setCurrentComment({ type: 'WinningTactic', text: applause, timestamp: new Date().toLocaleTimeString(), meta: result.meta } as Commentary);
             setLastCommentedMoveCount(moveCount);

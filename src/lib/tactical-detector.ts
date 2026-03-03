@@ -176,23 +176,142 @@ export function detectPin(game: Chess, lastMove: Move | null): TacticalPattern |
     
     // Pin exists if second piece is higher value than first
     if (firstPiece && secondPiece && secondPiece.value > firstPiece.value) {
-      const severity: 'minor' | 'major' | 'critical' =
-        secondPiece.piece === 'k' ? 'critical' :
-        secondPiece.value >= 9 ? 'major' : 'minor';
+      // Trade-off logic per user request:
+      // 1. Can T1 fight back?
+      // Use game.moves() which handles absolute pins automatically (will return empty if illegal)
+      const canT1CaptureAttacker = game.moves({ square: firstPiece.square, verbose: true })
+        .some(m => m.to === attackingSquare);
       
-      return {
-        type: 'pin',
-        attackingPiece: attackingPiece.toUpperCase(),
-        attackingSquare,
-        targetSquares: [firstPiece.square, secondPiece.square],
-        targetPieces: [firstPiece.piece.toUpperCase(), secondPiece.piece.toUpperCase()],
-        severity,
-        description: `${attackingPiece.toUpperCase()} on ${attackingSquare} pins ${firstPiece.piece.toUpperCase()} to ${secondPiece.piece.toUpperCase()}`
-      };
+      let valid = false;
+      let tacticSubtype = "";
+
+      if (!canT1CaptureAttacker) {
+        // "If the target can't fight back, it's a clean win"
+        valid = true;
+        tacticSubtype = "Clean Win";
+      } else {
+        // "If the target CAN fight back, check the trade"
+        // Check if attacker is effectively protected (protector value <= target value)
+        // because it's the target (T1) that would be capturing the attacker.
+        const protectorColor = lastMove.color;
+        const minProtectorVal = getMinDefenderValue(board, attackingSquare, protectorColor);
+        const isEffectivelyProtected = minProtectorVal <= firstPiece.value;
+        
+        if (isEffectivelyProtected) {
+          // "Only valid if we gain more than or equal to what we lose"
+          // User pseudo-code: if value(target) >= value(attacker)
+          // Target here is T1 (firstPiece)
+          if (firstPiece.value >= getPieceValue(attackingPiece)) {
+            valid = true;
+            tacticSubtype = "Good Trade";
+          }
+        }
+      }
+
+      if (valid) {
+        const severity: 'minor' | 'major' | 'critical' =
+          secondPiece.piece === 'k' ? 'critical' :
+          secondPiece.value >= 9 ? 'major' : 'minor';
+        
+        return {
+          type: 'pin',
+          attackingPiece: attackingPiece.toUpperCase(),
+          attackingSquare,
+          targetSquares: [firstPiece.square, secondPiece.square],
+          targetPieces: [firstPiece.piece.toUpperCase(), secondPiece.piece.toUpperCase()],
+          severity,
+          description: `${attackingPiece.toUpperCase()} on ${attackingSquare} pins ${firstPiece.piece.toUpperCase()} to ${secondPiece.piece.toUpperCase()} (${tacticSubtype})`
+        };
+      }
     }
   }
   
   return null;
+}
+
+// ============================================================================
+// PROTECTION CHECK (Board Geometry)
+// ============================================================================
+
+type BoardSquare = { type: string; color: 'w' | 'b' } | null;
+
+/**
+ * Get the minimum value among all pieces of `byColor` that defend `square`.
+ * Returns Infinity if no defender is found.
+ * Uses board geometry so it correctly detects same-color piece protection
+ * (unlike game.moves() which excludes moves to friendly-occupied squares).
+ */
+function getMinDefenderValue(board: BoardSquare[][], square: Square, byColor: 'w' | 'b'): number {
+  const targetFile = square.charCodeAt(0) - 97;
+  const targetRank = parseInt(square[1]) - 1;
+  let minValue = Infinity;
+
+  // Check knight attacks
+  const knightDeltas = [[-2,-1],[-2,1],[-1,-2],[-1,2],[1,-2],[1,2],[2,-1],[2,1]];
+  for (const [df, dr] of knightDeltas) {
+    const f = targetFile + df;
+    const r = targetRank + dr;
+    if (f >= 0 && f < 8 && r >= 0 && r < 8) {
+      const p = board[7 - r][f];
+      if (p && p.color === byColor && p.type === 'n') {
+        minValue = Math.min(minValue, getPieceValue('n'));
+      }
+    }
+  }
+
+  // Check pawn attacks (pawns attack diagonally)
+  const pawnDir = byColor === 'w' ? -1 : 1;
+  for (const df of [-1, 1]) {
+    const f = targetFile + df;
+    const r = targetRank + pawnDir;
+    if (f >= 0 && f < 8 && r >= 0 && r < 8) {
+      const p = board[7 - r][f];
+      if (p && p.color === byColor && p.type === 'p') {
+        minValue = Math.min(minValue, getPieceValue('p'));
+      }
+    }
+  }
+
+  // Check king adjacency
+  for (const df of [-1, 0, 1]) {
+    for (const dr of [-1, 0, 1]) {
+      if (df === 0 && dr === 0) continue;
+      const f = targetFile + df;
+      const r = targetRank + dr;
+      if (f >= 0 && f < 8 && r >= 0 && r < 8) {
+        const p = board[7 - r][f];
+        if (p && p.color === byColor && p.type === 'k') {
+          minValue = Math.min(minValue, getPieceValue('k'));
+        }
+      }
+    }
+  }
+
+  // Check sliding pieces (bishop, rook, queen) via ray tracing
+  const slidingDirs = [
+    { dirs: [[0,1],[0,-1],[1,0],[-1,0]], pieces: ['r', 'q'] },
+    { dirs: [[1,1],[1,-1],[-1,1],[-1,-1]], pieces: ['b', 'q'] }
+  ];
+
+  for (const { dirs, pieces } of slidingDirs) {
+    for (const [df, dr] of dirs) {
+      let f = targetFile + df;
+      let r = targetRank + dr;
+      while (f >= 0 && f < 8 && r >= 0 && r < 8) {
+        const p = board[7 - r][f];
+        if (p) {
+          if (p.color === byColor && pieces.includes(p.type)) {
+            minValue = Math.min(minValue, getPieceValue(p.type));
+          }
+          break; // Blocked by any piece
+        }
+        f += df;
+        r += dr;
+      }
+    }
+  }
+
+  return minValue;
 }
 
 // ============================================================================
@@ -222,51 +341,86 @@ export function detectSkewer(game: Chess, lastMove: Move | null): TacticalPatter
   const startFile = attackingSquare.charCodeAt(0) - 97;
   const startRank = parseInt(attackingSquare[1]) - 1;
   
-  for (const [df, dr] of directions) {
-    let file = startFile + df;
-    let rank = startRank + dr;
+  for (let [df, dr] of directions) {
     let firstPiece: { square: Square; piece: string; value: number } | null = null;
     let secondPiece: { square: Square; piece: string; value: number } | null = null;
     
-    while (file >= 0 && file < 8 && rank >= 0 && rank < 8) {
-      const piece = board[7 - rank][file];
+    // In a skewer, both T1 and T2 must be on the same ray relative to the attacker
+    // Check in one direction from the attacker
+    let f = startFile + df;
+    let r = startRank + dr;
+    
+    while (f >= 0 && f < 8 && r >= 0 && r < 8) {
+      const square = (String.fromCharCode(97 + f) + (r + 1)) as Square;
+      const piece = board[7 - r][f];
       
-      if (piece && piece.color !== attackerColor) {
-        if (!firstPiece) {
-          firstPiece = {
-            square: (String.fromCharCode(97 + file) + (rank + 1)) as Square,
-            piece: piece.type,
-            value: getPieceValue(piece.type)
-          };
-        } else if (!secondPiece) {
-          secondPiece = {
-            square: (String.fromCharCode(97 + file) + (rank + 1)) as Square,
-            piece: piece.type,
-            value: getPieceValue(piece.type)
-          };
+      if (piece) {
+        if (piece.color === attackerColor) {
           break;
+        } else {
+          if (!firstPiece) {
+            firstPiece = {
+              square,
+              piece: piece.type,
+              value: getPieceValue(piece.type)
+            };
+          } else if (!secondPiece) {
+            secondPiece = {
+              square,
+              piece: piece.type,
+              value: getPieceValue(piece.type)
+            };
+            break;
+          }
         }
       }
-      
-      file += df;
-      rank += dr;
+      f += df;
+      r += dr;
     }
     
-    // Skewer: first piece higher value than second (opposite of pin)
-    if (firstPiece && secondPiece && firstPiece.value > secondPiece.value) {
-      const severity: 'minor' | 'major' | 'critical' =
-        firstPiece.piece === 'k' ? 'critical' :
-        firstPiece.value >= 9 ? 'major' : 'minor';
-      
-      return {
-        type: 'skewer',
-        attackingPiece: attackingPiece.toUpperCase(),
-        attackingSquare,
-        targetSquares: [firstPiece.square, secondPiece.square],
-        targetPieces: [firstPiece.piece.toUpperCase(), secondPiece.piece.toUpperCase()],
-        severity,
-        description: `${attackingPiece.toUpperCase()} on ${attackingSquare} skewers ${firstPiece.piece.toUpperCase()} and ${secondPiece.piece.toUpperCase()}`
-      };
+    // Skewer verification logic
+    if (firstPiece && secondPiece) {
+      const attackerValue = getPieceValue(attackingPiece);
+      const t1 = firstPiece; 
+      const t2 = secondPiece;
+
+      // In a skewer, T1 is the more valuable piece that is forced to move
+      // T2 is the less valuable piece that is hit behind it.
+      if (t1.value > t2.value && t2.piece.toLowerCase() !== 'p') {
+        // Check if T2 is protected by the defender using board geometry.
+        // Protection only counts if the defender's value <= attacker's value.
+        // If the only "protector" is more valuable than the attacker, it's not
+        // real protection because recapturing would lose material for the defender.
+        const defenderColor = lastMove.color === 'w' ? 'b' : 'w';
+        const minDefenderVal = getMinDefenderValue(board, t2.square, defenderColor);
+        const isEffectivelyProtected = minDefenderVal <= attackerValue;
+        let valid = false;
+        let tacticSubtype = "";
+
+        if (attackerValue < t2.value) {
+          valid = true;
+          tacticSubtype = "Profitable Trade";
+        } else if (!isEffectivelyProtected) {
+          valid = true;
+          tacticSubtype = "Net Gain";
+        }
+
+        if (valid) {
+          const severity: 'minor' | 'major' | 'critical' =
+            t1.piece === 'k' ? 'critical' :
+            t1.value >= 9 ? 'major' : 'minor';
+          
+          return {
+            type: 'skewer',
+            attackingPiece: attackingPiece.toUpperCase(),
+            attackingSquare,
+            targetSquares: [t1.square, t2.square],
+            targetPieces: [t1.piece.toUpperCase(), t2.piece.toUpperCase()],
+            severity,
+            description: `${attackingPiece.toUpperCase()} on ${attackingSquare} skewers ${t1.piece.toUpperCase()} and ${t2.piece.toUpperCase()} (${tacticSubtype})`
+          };
+        }
+      }
     }
   }
   

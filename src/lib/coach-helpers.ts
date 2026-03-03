@@ -2,6 +2,7 @@
 import { BotProfile } from "./bot-profiles";
 import { OpeningVariation } from "./openings-repertoire";
 import { pickRandomComment } from "./coach-commentary";
+import { TacticalPattern } from "./tactical-detector";
 
 // Opening famous players and fun facts database
 export const OPENING_FACTS: Record<string, { players: string[], facts: string[], history?: string }> = {
@@ -245,20 +246,26 @@ const FIRST_MOVE_REACTIONS: Record<string, string[]> = {
     "e4 — the most direct way to fight for the center! Kasparov, Fischer, and Caruana all swear by it.",
     "1.e4! Classic and aggressive. You're in good company — this is the most popular first move at GM level.",
     "e4! 'Best by test' as Fischer said. Let's see what Black does.",
+    "Power move: 1.e4! Controls d5 and f5 immediately. Are we looking at a Ruy Lopez or maybe something sharper?",
+    "1.e4, the king of first moves. It opens up the queen and light-squared bishop. Very principled!",
   ],
   'd4': [
     "d4 — solid and positional. You might be heading for a Queen's Gambit, King's Indian, or Dutch. Smart choice.",
     "1.d4! The strategic choice. This usually leads to closed, maneuvering games. I like it.",
     "d4 — you clearly prefer long-term plans over early fireworks. Excellent start.",
+    "The Queen's Pawn start! 1.d4 puts immediate pressure on the center. Very robust.",
+    "Starting with d4. This is for the thinkers and planners. Let's build a solid structure.",
   ],
   'c4': [
     "The English Opening! A quiet but deep first move — often transposes into d4 structures.",
     "1.c4 — the English. You're controlling d5 without committing your center pawn. Very flexible!",
     "c4! A favorite of Karpov and Kramnik. You like subtle pressure — I can respect that.",
+    "The English! 1.c4 is a masterclass in flexibility. You keep the d-pawn reserve for later. Nice.",
   ],
   'Nf3': [
     "Nf3 on move 1 — developing and waiting to see what Black does. Very flexible, very modern.",
     "1.Nf3! A Réti-style start. You're not showing your hand yet. Smart.",
+    "Nf3! Prophylaxis and development from move one. You're looking for a King's Indian Attack or a Steiner setup?",
   ],
   'g3': [
     "The King's Fianchetto setup! You're planning Bg2 — a hypermodern approach to control the center.",
@@ -273,19 +280,24 @@ const FIRST_MOVE_REACTIONS: Record<string, string[]> = {
     "e5! The Open Game — symmetrical and fighting. Expect sharp, tactical chess.",
     "1...e5 — the oldest response to e4. You want an open game with counterplay.",
     "e5! Matching control in the center. This can lead to the Ruy Lopez, Italian, or King's Gambit.",
+    "1...e5! Brave choice. You're ready to fight for the center square by square.",
   ],
   'c5': [
     "c5 — the Sicilian Defense! The most popular GM response to e4. You're not giving White a symmetric game.",
     "Sicilian! c5 fights for d4 in an asymmetric way. This leads to the sharpest positions in chess.",
     "The Sicilian! Fischer loved it as Black. You're fighting for the center from the flank.",
+    "1...c5! The Sicilian implies a long, strategic battle ahead. Buckle up!",
+    "The Sicilian: 'Fighting chess' personified. You're looking for that counter-strike on the queenside.",
   ],
   'e6': [
     "e6 — looks like the French Defense might be on the cards! A solid, strategic choice.",
     "1...e6 — could be the French or English. You're building a solid pawn structure.",
+    "1...e6, preparing d5. The French is a wall White will find hard to crack.",
   ],
   'c6': [
     "c6 — the Caro-Kann is likely! A very solid, respected defense. Karpov's favorite.",
     "1...c6 — Caro-Kann territory. Solid and precise — this is the 'thinking player's defense'.",
+    "1...c6! Preparing the d5 thrust. The Caro-Kann is the rock of black defenses.",
   ],
   'd5': [
     "d5! Challenging the center directly. Could be the Scandinavian, or if 1.d4 was played, a Queen's Gambit Declined setup.",
@@ -294,16 +306,36 @@ const FIRST_MOVE_REACTIONS: Record<string, string[]> = {
   'd6': [
     "d6 — hm, potentially the Pirc or a Sicilian setup depending on what follows.",
     "1...d6 — a flexible start. Could lead to many different formations.",
+    "1...d6! The start of a King's Indian setup or a Pirc. Very deep and strategic.",
   ],
   'Nf6': [
     "Nf6! A hypermodern response — you're attacking White's center before establishing your own.",
     "1...Nf6 — the Alekhine Defense or the start of an Indian Defense. Very aggressive and dynamic!",
+    "1...Nf6! You're ready to contest d4 right away. Will it be a Nimzo or a Grünfeld?",
   ],
   'g6': [
     "g6 — the King's Indian or Pirc territory. You're planning to fianchetto and launch a kingside attack!",
     "1...g6 — fianchetto incoming! Kasparov loved this kind of dynamic counterplay.",
+    "1...g6! The Modern Defense. You're giving up the center to strike back later. I love the ambition!",
   ],
 };
+
+/**
+ * Returns a random interesting fact or player associated with an opening.
+ */
+export function getJakieOpeningFact(openingSystemId: string): string | null {
+  const facts = OPENING_FACTS[openingSystemId];
+  if (!facts) return null;
+
+  const choice = Math.random();
+  if (choice < 0.4 && facts.players.length > 0) {
+    const player = facts.players[Math.floor(Math.random() * facts.players.length)];
+    return `Did you know? **${player}** is a world-class expert in this line. Studying their games is a great way to learn!`;
+  } else {
+    const fact = facts.facts[Math.floor(Math.random() * facts.facts.length)];
+    return `Coach Tip: ${fact}`;
+  }
+}
 
 const OPENING_SPECULATION: Record<string, string[]> = {
   // After 1.e4 e5
@@ -404,24 +436,36 @@ const TACTIC_APPLAUSE: Record<string, string[]> = {
     "Knight fork! Both pieces are under fire simultaneously. The opponent has to choose what to save.",
     "Brilliant fork! One move, two threats. That's efficiency — remember this pattern!",
     "A fork! You've split the opponent's forces. This tactic is worth remembering — it wins material.",
+    "Double trouble! That fork puts the opponent in an impossible position.",
+    "Fork alert! You've successfully coordinated your pieces to create multiple threats. Excellent!",
+    "Strategic fork! You're forcing a decisive choice from your opponent. Very calculated.",
   ],
   pin: [
     "Well spotted — that's a pin! The pinned piece can't move without exposing something more valuable behind it.",
     "Nice pin! The opponent's piece is frozen in place. Now squeeze it!",
     "Excellent pin! A pinned piece is a paralyzed piece. This is a fundamental tactic — well done!",
     "Pin! The opponent is in trouble — that piece can't move freely anymore.",
+    "Paralysis by pin! You've neutralized that piece completely. Great positional awareness.",
+    "The power of the pin! You're using the piece behind it to control the board. Top tier play.",
+    "Absolute control through a pin. That piece is stuck until you say otherwise!",
   ],
   skewer: [
     "Superb skewer! You're forcing the more valuable piece to move, and winning what's behind it.",
     "A skewer! The opposite of a pin — you attack the valuable piece first to expose what's behind it. Brilliant!",
     "Nice skewer! Force the king (or queen) to move and take the piece behind it. Well seen!",
     "Skewer! You found the reverse pin. The opponent must lose material — excellent vision!",
+    "Through the heart! That skewer is a game-changer. You've exposed the hidden target.",
+    "Laser-like vision with that skewer. You're looking right through their defense!",
+    "Skewer success! You've forced the high-value piece out of the way to claim your prize.",
   ],
   discovered_attack: [
     "Discovered attack! Moving one piece unleashed a hidden threat from another. Very clever!",
     "Nice discovered attack — you revealed a second attacker that was hiding behind your own piece!",
     "Discovered attack! One move, two threats. This is one of the most powerful patterns in chess.",
     "Brilliant! Moving that piece uncovered a powerful discovered attack. The opponent won't see it coming!",
+    "Hidden depths! That discovery is a masterstroke. The opponent's calculation just fell apart.",
+    "Calculated discovery! You've used one piece as a shield, only to reveal the true threat at the perfect moment.",
+    "Double-edged beauty! The move itself was good, but the discovery makes it crushing.",
   ],
 };
 
@@ -429,10 +473,33 @@ const TACTIC_APPLAUSE: Record<string, string[]> = {
  * Returns a Jakie-flavored tactic applause line for the named tactic.
  */
 export function getJakieTacticApplause(
-  tacticType: 'fork' | 'pin' | 'skewer' | 'discovered_attack'
+  tacticType: 'fork' | 'pin' | 'skewer' | 'discovered_attack',
+  pattern?: TacticalPattern
 ): string {
   const lines = TACTIC_APPLAUSE[tacticType] || TACTIC_APPLAUSE['fork'];
-  return lines[Math.floor(Math.random() * lines.length)];
+  let applause = lines[Math.floor(Math.random() * lines.length)];
+
+  // Inject specific tactical outcomes if available
+  if (pattern?.description) {
+    if (pattern.description.includes('Clean Win') || pattern.description.includes('Profitable Trade')) {
+        const rewards = [
+            ` That's a **${pattern.description}**! You gain more than you give.`,
+            ` Excellent vision! A **${pattern.description}** right there.`,
+            ` Look at that — a **${pattern.description}**. Material advantage incoming!`,
+            ` Smooth! A **${pattern.description}** like that wins games.`
+        ];
+        applause += rewards[Math.floor(Math.random() * rewards.length)];
+    } else if (pattern.description.includes('Good Trade')) {
+        const rewards = [
+            ` It's a **${pattern.description}** — you're exchanging well.`,
+            ` A solid **${pattern.description}**. Keeping the pressure up!`,
+            ` Nice! That's a **${pattern.description}** to simplify the position.`
+        ];
+        applause += rewards[Math.floor(Math.random() * rewards.length)];
+    }
+  }
+
+  return applause;
 }
 
 // ============================================================================
@@ -460,10 +527,12 @@ const ENDGAME_COMMENTS: Record<EndgameType, string[]> = {
   'kq-k': [
     "King + Queen vs King! This is a forced win — push the opponent's king to the corner and then deliver mate. Remember: queen restricts, king approaches!",
     "KQ vs K endgame! It's theoretically won, but requires technique. Don't stalemate — give the king air first!",
+    "Ah, the classic Queen dance. Cut the king off into a box, Bring your king in for the final blow!",
   ],
   'kr-k': [
     "King + Rook vs King — a classic endgame! Use the Lucena or Philidor method. Activate your king and use the rook to cut the opponent's king off.",
     "KR vs K! Theoretically won. Use the 'box' method — your rook cuts the enemy king into a smaller and smaller area.",
+    "The Box Method! One row at a time, push them back. Don't forget your king's help!",
   ],
   'kbb-k': [
     "Two bishops vs lone King! Coordinated bishops are very powerful. Drive the king to the corner using a mating net.",
@@ -472,6 +541,7 @@ const ENDGAME_COMMENTS: Record<EndgameType, string[]> = {
   'kbn-k': [
     "King, Bishop, and Knight vs King — one of the hardest endgames to convert! You must drive the king to the corner that matches your bishop's color.",
     "KBN vs K is famously difficult. It requires over 30 precise moves. Drive the king to the right-colored corner!",
+    "The 'W' maneuver! This is the ultimate test of technique. Bishop and Knight working in perfect harmony.",
   ],
   'kq-kr': [
     "Queen vs Rook endgame — generally a win for the queen, but it's tricky! The rook defends at range. Technique is key.",
@@ -480,6 +550,7 @@ const ENDGAME_COMMENTS: Record<EndgameType, string[]> = {
   'kr-kr': [
     "Rook and King vs Rook and King — this is likely a draw! Know the Philidor position and the Lucena: key defensive techniques.",
     "Rook endgame! These are the most common and most complex endgames. Remember: passive rooks lose, active rooks draw or win!",
+    "Ah, a Rook endgame. As Tarrasch said: 'Rook endings are always a draw.' Well, unless you stay active!",
   ],
   'kr-kp': [
     "Rook vs Pawn — can be a draw even with the rook! If it's a rook pawn or bishop pawn on the 7th, the weaker side may hold.",
@@ -488,10 +559,12 @@ const ENDGAME_COMMENTS: Record<EndgameType, string[]> = {
   'krp-kr': [
     "Rook + Pawn vs Rook — the most common and complex endgame! Use the Lucena position if you're ahead, or the Philidor if you're defending.",
     "Rook and pawn endgame! Rook activity matters more than material here. The rook should be behind the passed pawn.",
+    "Lucena or Philidor? This is where games are won or saved. Keep that rook active behind the pawn!",
   ],
   'opposite-bishops': [
     "Opposite-colored bishops! This endgame is famous for drawing even when one side is a pawn or two up. The attacking side's pawns can't be protected by the bishop.",
     "Opposite-colored bishops — the drawing equalizer! The stronger side often can't make progress because only one bishop controls the critical squares.",
+    "The ultimate drawing weapon. Unless there are heavy pieces on the board, this is very hard to win.",
   ],
   'same-bishops': [
     "Same-colored bishops! The stronger side has better winning chances here — the bishops fight for the same squares, so the stronger side can dominate.",
@@ -500,6 +573,7 @@ const ENDGAME_COMMENTS: Record<EndgameType, string[]> = {
   'pure-pawn': [
     "Pure pawn endgame! King activity and opposition are everything now. Get your king to the front of your pawns!",
     "No pieces left — just kings and pawns! This is where 'opposition' and 'key squares' decide the game. Every pawn move is permanent!",
+    "Opposition! Whoever controls the space in front of the pawns wins. Every tempo is a diamond here.",
   ],
   'knight-pawn': [
     "Knight and pawn endgames — knights are tricky here! They're much better in closed positions with pawns on both sides of the board.",
@@ -516,6 +590,7 @@ const ENDGAME_COMMENTS: Record<EndgameType, string[]> = {
   'complex': [
     "We're in an endgame! Material is down — activate your king, it's a fighting piece now!",
     "Endgame phase! Every tempo matters here. Look for passed pawns and king infiltration opportunities.",
+    "The final stage. King activity is now your most powerful weapon. Use it!",
   ],
 };
 

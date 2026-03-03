@@ -530,3 +530,60 @@
 
 - **Rule or Pattern**: Always synchronize state updates that are logically linked (like FEN and move progress) to avoid race conditions.
 - **Future Safeguard**: Use transition states or loading overlays to prevent user interaction during non-interactive animation phases.
+
+### 28. Invalid FEN Strings in Unit Tests
+
+**Bug**:
+
+- Description: Unit tests for Pin and Skewer logic kept failing or throwing errors because the board state couldn't be initialized.
+- Location: `src/lib/__tests__/pin-profitability.test.ts` and `src/lib/__tests__/skewer-profitability.test.ts`
+- Root Cause: FEN strings provided in the tests were manually crafted or truncated and lacked the mandatory kings for both sides, which `chess.js` requires for a valid instance.
+
+**Fix**:
+
+- Summary: Updated all test FEN strings to include both kings on irrelevant squares.
+- Files Changed: `src/lib/__tests__/pin-profitability.test.ts`, `src/lib/__tests__/skewer-profitability.test.ts`
+- Why It Works: Providing complete and legal FEN configurations allows `chess.js` to initialize correctly and provide accurate move generation and status data for the tactical detectors.
+
+**Prevention**:
+
+- Rule or Pattern: Always include both kings in any FEN string used for testing, even if they aren't directly involved in the tactical pattern.
+- Future Safeguard: Use a helper or a template FEN that includes all necessary kings and basic structures when writing unit tests.
+
+### 29. chess.js `BigInt` Hash Corruption Crash
+
+**Bug**:
+
+- Description: The application crashed with `TypeError: Cannot mix BigInt and other types` when trying to detect tactical patterns.
+- Location: `src/lib/tactical-detector.ts`
+- Root Cause: Modifying the `chess.js` board state via `.put()` or `.remove()` and then calling `.moves()` or `.isCheck()` causes internal hash state corruption in certain versions of `chess.js`, leading to a crash when it tries to update the Zobrist hash.
+
+**Fix**:
+
+- Summary: Removed all use of `.put()` and `.remove()` in favor of manual board geometry ray-tracing for protection checks.
+- Files Changed: `src/lib/tactical-detector.ts`
+- Why It Works: By calculating protection status manually (scanning diagonals and orthogonals), we avoid mutating the `chess.js` object state entirely during detection, bypassing the buggy hash calculation logic.
+
+**Prevention**:
+
+- Rule or Pattern: Treat `chess.js` instances as read-only whenever possible during tactical analysis.
+- Future Safeguard: Prefer custom board geometry functions like `getMinDefenderValue` for deep analysis rather than relying on `chess.js` mutations.
+
+### 30. Protection Detection Failure for Same-Color Pieces
+
+**Bug**:
+
+- Description: Pieces were being marked as "unprotected" even when a friendly piece was clearly defending them, causing tactical detectors to identify "Net Gains" incorrectly.
+- Location: `src/lib/tactical-detector.ts`
+- Root Cause: Reusing `isSquareControlled` (from `positional-analyzer.ts`) which uses `game.moves()`. Since `game.moves()` only returns legal moves (which cannot capture own pieces), it never "looks" at friendly pieces to see if they are guarded.
+
+**Fix**:
+
+- Summary: Implemented `getMinDefenderValue`, a custom ray-tracing function that ignores piece color when checking for line-of-sight protection.
+- Files Changed: `src/lib/tactical-detector.ts`
+- Why It Works: Manual ray-tracing doesn't care about capture legality; it simply checks if a piece _could_ occupy the target square if it were an enemy, which is the correct way to measure static defense.
+
+**Prevention**:
+
+- Rule or Pattern: Never use `game.moves()` or `isCheck()` to detect static protection of friendly pieces.
+- Future Safeguard: Always use a dedicated board-geometry-based protection checker for tactical analysis.
