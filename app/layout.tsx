@@ -1,5 +1,6 @@
 import { Inter, Lexend } from 'next/font/google';
 import './globals.css';
+import { AppProviders } from './providers';
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
 const lexend = Lexend({ subsets: ['latin'], variable: '--font-lexend' });
@@ -17,7 +18,7 @@ export default function RedesignLayout({
   return (
     <html lang="en" className={`${inter.variable} ${lexend.variable}`}>
       <body className="font-sans antialiased text-[var(--text-secondary)] bg-[var(--background)]">
-        {children}
+        <AppProviders>{children}</AppProviders>
       </body>
     </html>
   );
