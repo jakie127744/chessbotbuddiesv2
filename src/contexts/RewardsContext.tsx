@@ -329,27 +329,28 @@ export function RewardsProvider({ children }: { children: React.ReactNode }) {
                         .maybeSingle();
 
                     if (!error && data) {
+                        const userData = data as import('@/lib/user-profile').UserProfile;
                         profile = {
-                            id: data.id,
-                            username: data.username || session.user.email || 'player',
+                            id: userData.id,
+                            username: userData.username || session.user.email || 'player',
                             email: session.user.email || undefined,
                             createdAt: Date.now(),
-                            xp: data.xp || 0,
+                            xp: userData.xp || 0,
                             stats: {
-                                gamesPlayed: data.games_played || 0,
-                                puzzlesSolved: data.puzzles_solved || 0,
-                                lessonsCompleted: data.lessons_completed || 0,
-                                wins: data.wins || 0,
-                                losses: data.losses || 0,
-                                draws: data.draws || 0,
+                                gamesPlayed: userData.stats?.gamesPlayed ?? userData.games_played ?? 0,
+                                puzzlesSolved: userData.stats?.puzzlesSolved ?? userData.puzzles_solved ?? 0,
+                                lessonsCompleted: userData.stats?.lessonsCompleted ?? userData.lessons_completed ?? 0,
+                                wins: userData.stats?.wins ?? userData.wins ?? 0,
+                                losses: userData.stats?.losses ?? userData.losses ?? 0,
+                                draws: userData.stats?.draws ?? userData.draws ?? 0,
                             },
-                            completedLessons: data.completed_lessons || [],
-                            minigameHighScores: data.minigame_scores || {},
-                            achievements: data.achievements || {},
-                            activityLog: data.activity_log || [],
-                            dailyQuests: data.daily_quests || [],
-                            streak: data.streak || 0,
-                            lastActiveDate: data.last_active_date || undefined,
+                            completedLessons: userData.completedLessons ?? userData.completed_lessons ?? [],
+                            minigameHighScores: userData.minigameHighScores ?? userData.minigame_scores ?? {},
+                            achievements: userData.achievements ?? {},
+                            activityLog: userData.activityLog ?? userData.activity_log ?? [],
+                            dailyQuests: userData.dailyQuests ?? userData.daily_quests ?? [],
+                            streak: userData.streak ?? 0,
+                            lastActiveDate: userData.lastActiveDate ?? userData.last_active_date ?? undefined,
                         };
 
                         persistProfileLocally(profile);

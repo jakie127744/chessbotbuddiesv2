@@ -34,6 +34,17 @@ function TrainingHubContent() {
 
   // Redesigned Opening Trainer hook
   const openingTrainer = useOpeningTrainerRedesign();
+    // Google AdSense integration
+    useEffect(() => {
+      const script = document.createElement('script');
+      script.async = true;
+      script.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9907028021598445';
+      script.crossOrigin = 'anonymous';
+      document.body.appendChild(script);
+      return () => {
+        document.body.removeChild(script);
+      };
+    }, []);
 
   useEffect(() => {
     if (tabParam && VALID_TABS.includes(tabParam)) {
@@ -60,6 +71,20 @@ function TrainingHubContent() {
             >
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
               Home
+      {/* Tower AdSense Ad */}
+      <div style={{ margin: '16px 0' }}>
+        <ins
+          className="adsbygoogle"
+          style={{ display: 'block' }}
+          data-ad-client="ca-pub-9907028021598445"
+          data-ad-slot="3044307523"
+          data-ad-format="auto"
+          data-full-width-responsive="true"
+        ></ins>
+      </div>
+      <script dangerouslySetInnerHTML={{
+        __html: '(adsbygoogle = window.adsbygoogle || []).push({});'
+      }} />
             </button>
             <span className="text-slate-600">/</span>
             <button

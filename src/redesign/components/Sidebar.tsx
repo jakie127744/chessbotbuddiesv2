@@ -124,6 +124,22 @@ export function Sidebar({ activeView, isOpen, onClose, userProfile, onLogout, on
           })}
         </nav>
 
+        {/* Ad Banner: Monetization Dead Zone (Pre-game/Lobby) */}
+        <div className="px-4 pb-2">
+          <div style={{ margin: '12px 0', textAlign: 'center' }}>
+            <ins
+              className="adsbygoogle"
+              style={{ display: 'block', textAlign: 'center' }}
+              data-ad-client="ca-pub-9907028021598445"
+              data-ad-slot="3330215112"
+              data-ad-format="auto"
+              data-full-width-responsive="true"
+            ></ins>
+          </div>
+          <script dangerouslySetInnerHTML={{
+            __html: '(adsbygoogle = window.adsbygoogle || []).push({});'
+          }} />
+        </div>
         {/* User Section */}
         <div className="p-4 border-t border-redesign-glass-border">
           {userProfile ? (

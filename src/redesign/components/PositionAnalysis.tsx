@@ -199,7 +199,21 @@ export function PositionAnalysis() {
                 </div>
             </div>
           </div>
-      </div>
+         </div>
+         {/* Native Ad: Monetization Dead Zone (Post-game/Review) */}
+         <div style={{ margin: '16px 0', textAlign: 'center' }}>
+            <ins
+               className="adsbygoogle"
+               style={{ display: 'block', textAlign: 'center' }}
+               data-ad-client="ca-pub-9907028021598445"
+               data-ad-slot="8128575211"
+               data-ad-format="auto"
+               data-full-width-responsive="true"
+            ></ins>
+         </div>
+         <script dangerouslySetInnerHTML={{
+            __html: '(adsbygoogle = window.adsbygoogle || []).push({});'
+         }} />
 
       {/* RIGHT: Analysis Panels */}
       <div className="w-full lg:w-[360px] flex flex-col gap-3 self-start max-h-[calc(100vh-140px)] overflow-y-auto custom-scrollbar">
