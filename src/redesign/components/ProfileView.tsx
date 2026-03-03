@@ -24,7 +24,8 @@ import {
   Filter,
   CheckCircle2,
   Medal,
-  ChevronRight
+  ChevronRight,
+  X
 } from 'lucide-react';
 import { useRewards, ACHIEVEMENTS } from '@/contexts/RewardsContext';
 import { getUserProfile, updateUserProfile, UserProfile } from '@/lib/user-profile';
