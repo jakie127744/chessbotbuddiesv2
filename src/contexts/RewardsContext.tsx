@@ -1,6 +1,7 @@
 'use client';
 
 import React, { createContext, useContext, useEffect, useState } from 'react';
+import { supabase } from '@/lib/supabaseClient';
 import { 
     getUserProfile, 
     updateUserProfile, 
@@ -282,209 +283,161 @@ export function RewardsProvider({ children }: { children: React.ReactNode }) {
   const [dailyQuests, setDailyQuests] = useState<QuestProgress[]>([]);
   const [isLoaded, setIsLoaded] = useState(false);
 
+    const updateLocalProfile = (updates: Partial<UserProfile>) => {
+        setUserProfile(prev => prev ? { ...prev, ...updates } : prev);
+    };
+
   // Load from local storage OR UserProfile
   useEffect(() => {
-    // 1. Try to load legacy context storage
-    const saved = localStorage.getItem(STORAGE_KEY);
-    let loadedState: Partial<RewardsState> = {};
-    
-    if (saved) {
-        try {
-            loadedState = JSON.parse(saved);
-        } catch (e) {
-            console.error("Failed to load rewards:", e);
+    const hydrate = async () => {
+        // 1. Try to load legacy context storage
+        const saved = typeof window !== 'undefined' ? localStorage.getItem(STORAGE_KEY) : null;
+        let loadedState: Partial<RewardsState> = {};
+        if (saved) {
+            try {
+                loadedState = JSON.parse(saved);
+            } catch (e) {
+                console.error('Failed to load rewards:', e);
+            }
         }
-    }
 
-    // 2. Hydrate/Override from User Profile (Source of Truth)
-    // This fixes the issue where login updates profile but RewardsContext stays stale/empty
-    import('@/lib/user-profile').then(({ getUserProfile }) => {
-        const profile = getUserProfile();
-        
-        // If we have a logged-in profile, its stats should take precedence over local cache
-        // effectively "loading" the save from the DB/Profile
+        // Helper to persist a fetched profile into the local cache so existing helpers keep working
+        const persistProfileLocally = (profile: any) => {
+            if (typeof window === 'undefined' || !profile?.id) return;
+            try {
+                const usersRaw = localStorage.getItem('chess_users_v2');
+                const users = usersRaw ? JSON.parse(usersRaw) : {};
+                users[profile.id] = profile;
+                localStorage.setItem('chess_users_v2', JSON.stringify(users));
+                localStorage.setItem('chess_active_user_id', profile.id);
+            } catch (e) {
+                console.warn('Failed to persist profile locally:', e);
+            }
+        };
+
+        let profile: UserProfile | null = null;
+
+        // 2. Try Supabase as source of truth (if logged in)
+        try {
+            if (supabase) {
+                const { data: { session } } = await supabase.auth.getSession();
+                if (session?.user) {
+                    const { data, error } = await supabase
+                        .from('profiles')
+                        .select('*')
+                        .eq('id', session.user.id)
+                        .maybeSingle();
+
+                    if (!error && data) {
+                        profile = {
+                            id: data.id,
+                            username: data.username || session.user.email || 'player',
+                            email: session.user.email || undefined,
+                            createdAt: Date.now(),
+                            xp: data.xp || 0,
+                            stats: {
+                                gamesPlayed: data.games_played || 0,
+                                puzzlesSolved: data.puzzles_solved || 0,
+                                lessonsCompleted: data.lessons_completed || 0,
+                                wins: data.wins || 0,
+                                losses: data.losses || 0,
+                                draws: data.draws || 0,
+                            },
+                            completedLessons: data.completed_lessons || [],
+                            minigameHighScores: data.minigame_scores || {},
+                            achievements: data.achievements || {},
+                            activityLog: data.activity_log || [],
+                            dailyQuests: data.daily_quests || [],
+                            streak: data.streak || 0,
+                            lastActiveDate: data.last_active_date || undefined,
+                        };
+
+                        persistProfileLocally(profile);
+                    }
+                }
+            }
+        } catch (e) {
+            console.warn('Supabase profile fetch failed; falling back to local cache.', e);
+        }
+
+        // 3. Fallback to local profile helper
+        if (!profile) {
+            const { getUserProfile } = await import('@/lib/user-profile');
+            profile = getUserProfile();
+        }
+
+        // 4. Hydrate state
         if (profile) {
-            console.log('[Rewards] Hydrating from User Profile:', profile.username);
+            console.log('[Rewards] Hydrating from profile:', profile.username);
             setUserProfile(profile);
             const loadedXp = profile.xp || loadedState.xp || 0;
             setXp(loadedXp);
-            
-            // Recalculate level immediately based on authoritative XP
             const correctLevel = calculateLevel(loadedXp);
             setLevel(correctLevel);
-            console.log(`[Rewards] Synced Level: ${correctLevel} (XP: ${loadedXp})`);
-            
-            // Sync specific fields - NOTE: Profile uses 'gamesPlayed' but UserStats uses 'totalGames'
-            if (profile.stats) {
-                 setStats(prev => ({
-                     ...prev,
-                     ...(loadedState.stats || {}),
-                     totalGames: profile.stats!.gamesPlayed || 0,
-                     puzzlesSolved: profile.stats!.puzzlesSolved || 0,
-                     // Authoritative count is the larger of the stat or the array length to fix out-of-sync profiles
-                     lessonsCompleted: Math.max(profile.stats!.lessonsCompleted || 0, profile.completedLessons?.length || 0),
-                     openingsCompleted: profile.openingHistory ? Object.keys(profile.openingHistory).length : 0,
-                     endgamesCompleted: profile.stats!.endgamesCompleted || 0,
-                     minigamesPlayed: profile.stats!.minigamesPlayed || 0,
-                     wins: profile.stats!.wins || 0,
-                     losses: profile.stats!.losses || 0,
-                     draws: profile.stats!.draws || 0
-                 }));
-            }
-            
-            if (profile.completedLessons) {
-                setCompletedLessons(profile.completedLessons);
-            }
-
-            if (profile.achievements) {
-                // Merge with existing locally loaded achievements, favoring profile source of truth
-                setAchievements(prev => ({
-                    ...prev,
-                    ...profile.achievements
-                }));
-            }
-
-            if (profile.activityLog) {
-                setActivityLog(profile.activityLog as ActivityLogItem[]);
-            }
-
-            // Hydrate streaks and daily quests from profile/cache
-            if (profile.dailyQuests && profile.dailyQuests.length > 0) {
-                setDailyQuests(profile.dailyQuests as QuestProgress[]);
-            } else if (loadedState.dailyQuests && loadedState.dailyQuests.length > 0) {
-                setDailyQuests(loadedState.dailyQuests);
-            }
-
-            if (profile.streak !== undefined) {
-                setStreak(profile.streak);
-            } else if (loadedState.streak !== undefined) {
-                setStreak(loadedState.streak as number);
-            }
-            
-            // Items wrapped in try-catch logic above for loadedState are fine
+            setStats(prev => ({
+                ...prev,
+                ...(loadedState.stats || {}),
+                totalGames: profile.stats?.gamesPlayed || 0,
+                puzzlesSolved: profile.stats?.puzzlesSolved || 0,
+                lessonsCompleted: Math.max(profile.stats?.lessonsCompleted || 0, profile.completedLessons?.length || 0),
+                openingsCompleted: profile.openingHistory ? Object.keys(profile.openingHistory).length : 0,
+                endgamesCompleted: profile.stats?.endgamesCompleted || 0,
+                minigamesPlayed: profile.stats?.minigamesPlayed || 0,
+                wins: profile.stats?.wins || 0,
+                losses: profile.stats?.losses || 0,
+                draws: profile.stats?.draws || 0,
+            }));
+            if (profile.completedLessons) setCompletedLessons(profile.completedLessons);
+            if (profile.achievements) setAchievements(prev => ({ ...prev, ...(loadedState.achievements || {}), ...profile!.achievements! }));
+            else if (loadedState.achievements) setAchievements(loadedState.achievements);
+            if (profile.activityLog) setActivityLog(profile.activityLog);
+            if (profile.dailyQuests) setDailyQuests(profile.dailyQuests as QuestProgress[]);
+            if (profile.streak !== undefined) setStreak(profile.streak);
+            if (loadedState.stars) setStars(loadedState.stars);
+            if (loadedState.unlockedItems) setUnlockedItems(loadedState.unlockedItems);
         } else {
-             // Guest / No-Profile: Use loaded state directly
-             setXp(loadedState.xp || 0);
-             setLevel(loadedState.level || 1);
-             setStars(loadedState.stars || 0);
-             setAchievements(loadedState.achievements || {});
-             setUnlockedItems(loadedState.unlockedItems || []);
-             setCompletedLessons(loadedState.completedLessons || []);
-             setActivityLog(loadedState.activityLog || []);
-            setDailyQuests(loadedState.dailyQuests || []);
-            if (loadedState.streak !== undefined) {
-                setStreak(loadedState.streak as number);
-            }
-            setStats(loadedState.stats || {
-                totalGames: 0,
-                wins: 0,
-                losses: 0,
-                draws: 0,
-                openingsCompleted: 0,
-                puzzlesSolved: 0,
-                lessonsCompleted: 0,
-                endgamesCompleted: 0,
-                minigamesPlayed: 0,
-                bestWinELO: 0,
-                uniqueBotsDefeated: []
-            });
-            // Fallback for quests will be handled by checkDailyReset
+            // Legacy fallback: use whatever was in local storage
+            if (loadedState.xp) setXp(loadedState.xp);
+            if (loadedState.level) setLevel(loadedState.level);
+            if (loadedState.stars) setStars(loadedState.stars);
+            if (loadedState.achievements) setAchievements(loadedState.achievements);
+            if (loadedState.unlockedItems) setUnlockedItems(loadedState.unlockedItems);
+            if (loadedState.completedLessons) setCompletedLessons(loadedState.completedLessons);
+            if (loadedState.activityLog) setActivityLog(loadedState.activityLog);
+            if (loadedState.stats) setStats(prev => ({ ...prev, ...loadedState.stats! }));
+            if (loadedState.dailyQuests) setDailyQuests(loadedState.dailyQuests as QuestProgress[]);
+            if (loadedState.streak) setStreak(loadedState.streak);
         }
-        
+
         setIsLoaded(true);
-    });
+    };
+
+    hydrate();
   }, []);
 
-  const updateLocalProfile = (updates: Partial<UserProfile>) => {
-      setUserProfile(prev => {
-          if (!prev) {
-              // If no profile in state, try to get it from storage first
-              const fresh = getUserProfile();
-              if (fresh) return { ...fresh, ...updates };
-              return null; // Don't create partial profiles
-          }
-          
-          // CRITICAL: Ensure nested stats are merged, not overwritten
-          const newProfile = { ...prev, ...updates };
-          if (updates.stats && prev.stats) {
-              newProfile.stats = {
-                  ...prev.stats,
-                  ...updates.stats
-              };
-          }
-          
-          return newProfile;
-      });
-  };
-
-  // Daily Reset & Streak Logic
+  // Daily streak / quests check
   useEffect(() => {
     if (!isLoaded) return;
 
-    const performDailyCheck = () => {
-        const now = new Date();
-        const today = now.toISOString().split('T')[0]; // YYYY-MM-DD
-        const user = getUserProfile(); // Use the loaded profile for source of truth on persistence
-        const lastActive = user?.lastActiveDate;
+    const today = new Date().toISOString().slice(0, 10);
+    const lastActive = userProfile?.lastActiveDate;
+    let newStreak = streak;
+    let needsUpdate = false;
 
-        console.log(`[Rewards] Checking Daily Reset. Today: ${today}, LastActive: ${lastActive}`);
+    if (lastActive !== today) {
+        newStreak = lastActive ? streak + 1 : 1;
+        needsUpdate = true;
+    }
 
-        let newQuests = dailyQuests;
-        let newStreak = streak;
-        let needsUpdate = false;
-
-        // 1. Check if it's a new day (or if we have no quests)
-        if (lastActive !== today || dailyQuests.length === 0) {
-            console.log('[Rewards] It is a new day! Resetting quests...');
-            
-            // Randomize Quests for variety? For now, standard set.
-            newQuests = [
-                { id: 'daily-puzzles', progress: 0, target: 5, completed: false, lastUpdated: Date.now(), rewardXp: 100, title: 'Tactics Trainer' },
-                { id: 'daily-games', progress: 0, target: 3, completed: false, lastUpdated: Date.now(), rewardXp: 150, title: 'Grandmaster Grind' },
-                { id: 'daily-lessons', progress: 0, target: 1, completed: false, lastUpdated: Date.now(), rewardXp: 200, title: 'Knowledge is Power' }
-            ];
-            
-            setDailyQuests(newQuests);
-            needsUpdate = true;
-        }
-
-        // 2. Check Streak
-        if (lastActive !== today) {
-            if (!lastActive) {
-                // First ever login
-                newStreak = 1;
-            } else {
-                const lastDate = new Date(lastActive);
-                const yesterday = new Date(now);
-                yesterday.setDate(yesterday.getDate() - 1);
-                
-                // Compare YYYY-MM-DD strings to avoid time issues
-                if (lastDate.toISOString().split('T')[0] === yesterday.toISOString().split('T')[0]) {
-                    // Logged in yesterday -> Increment
-                    newStreak = (user?.streak || 0) + 1;
-                    console.log(`[Rewards] Streak continued! New streak: ${newStreak}`);
-                } else {
-                    // Missed a day -> Reset
-                    newStreak = 1;
-                    console.log('[Rewards] Streak broken. Reset to 1.');
-                }
-            }
-            setStreak(newStreak);
-            needsUpdate = true;
-        }
-
-        // 3. Persist if changed
-        if (needsUpdate) {
-            updateUserProfile({
-                dailyQuests: newQuests,
-                streak: newStreak,
-                lastActiveDate: today
-            });
-        }
-    };
-
-    performDailyCheck();
-  }, [isLoaded]); // Run once after initial load
+    if (needsUpdate) {
+        setStreak(newStreak);
+        updateUserProfile({
+            dailyQuests,
+            streak: newStreak,
+            lastActiveDate: today
+        });
+    }
+  }, [isLoaded, streak, dailyQuests, userProfile]);
 
   // Save to local storage
   useEffect(() => {

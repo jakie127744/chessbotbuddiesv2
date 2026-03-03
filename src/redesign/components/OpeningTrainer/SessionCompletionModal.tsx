@@ -157,7 +157,12 @@ export function SessionCompletionModal({
               <button 
                 className="bg-emerald-500 hover:bg-emerald-600 text-white font-black py-4 px-10 rounded-2xl transition-all shadow-2xl shadow-emerald-500/30 uppercase tracking-widest flex items-center gap-3"
                 onClick={() => {
-                  alert('Posting to Social Media via chessbotbuddies.org');
+                  const shareUrl = encodeURIComponent(`https://chessbotbuddies.org/share?opening=${encodeURIComponent(openingName)}&variation=${encodeURIComponent(variationName)}`);
+                  const quote = encodeURIComponent(`I just mastered ${openingName} – ${variationName} on ChessBotBuddies!`);
+                  const fbUrl = `https://www.facebook.com/sharer/sharer.php?u=${shareUrl}&quote=${quote}`;
+                  if (typeof window !== 'undefined') {
+                    window.open(fbUrl, '_blank', 'noreferrer,width=700,height=700');
+                  }
                 }}
               >
                 <Share2 size={20} />

@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { Trophy, Medal, ChevronUp, ChevronDown, User, Star, GraduationCap, Brain, Zap } from 'lucide-react';
+import { Trophy, Medal, ChevronUp, ChevronDown, User, Star, GraduationCap, Brain, Zap, Shield, BookOpen } from 'lucide-react';
 import { useRewards } from '@/contexts/RewardsContext';
 import { fetchGlobalLeaderboard, LeaderboardEntry, LeaderboardMetric } from '@/lib/leaderboard-data';
 
@@ -10,6 +10,8 @@ const TABS: { id: LeaderboardMetric; label: string; icon: any }[] = [
   { id: 'xp', label: 'XP Points', icon: Zap },
   { id: 'puzzles', label: 'Puzzles', icon: Brain },
   { id: 'lessons', label: 'Lessons', icon: GraduationCap },
+   { id: 'endgames', label: 'Endgames', icon: Shield },
+   { id: 'openings', label: 'Openings', icon: BookOpen },
 ];
 
 export function LeaderboardView() {
@@ -40,6 +42,8 @@ export function LeaderboardView() {
       case 'xp': return `${player.xp?.toLocaleString()} XP`;
       case 'puzzles': return `${player.puzzlesSolved} Solved`;
       case 'lessons': return `${player.lessonsCompleted} Done`;
+         case 'endgames': return `${player.endgamesCompleted ?? 0} Done`;
+         case 'openings': return `${player.openingsCompleted ?? 0} Done`;
       case 'rating': default: return player.elo;
     }
   };
@@ -49,6 +53,8 @@ export function LeaderboardView() {
       case 'xp': return 'Experience';
       case 'puzzles': return 'Puzzles';
       case 'lessons': return 'Lessons';
+         case 'endgames': return 'Endgames';
+         case 'openings': return 'Openings';
       case 'rating': default: return 'Rating';
     }
   };
@@ -141,9 +147,12 @@ export function LeaderboardView() {
                           </span>
                         ) : (
                           <span className="text-xs text-zinc-500 font-bold uppercase tracking-widest">
-                             {activeMetric === 'xp' ? `${player.elo} ELO` : 
-                              activeMetric === 'puzzles' ? `${Math.round((player.puzzlesSolved || 0) / (player.gamesPlayed || 1) * 10) / 10} avg` : 
-                              `${player.xp?.toLocaleString()} XP`}
+                                           {activeMetric === 'xp' ? `${player.elo} ELO` :
+                                             activeMetric === 'puzzles' ? `${Math.round((player.puzzlesSolved || 0) / (player.gamesPlayed || 1) * 10) / 10} avg` :
+                                             activeMetric === 'lessons' ? `${player.lessonsCompleted || 0} lessons` :
+                                             activeMetric === 'endgames' ? `${player.endgamesCompleted || 0} endgames` :
+                                             activeMetric === 'openings' ? `${player.openingsCompleted || 0} openings` :
+                                             `${player.xp?.toLocaleString()} XP`}
                           </span>
                         )}
                      </div>

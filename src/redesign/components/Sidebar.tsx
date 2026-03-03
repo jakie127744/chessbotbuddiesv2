@@ -7,7 +7,6 @@ import {
   Bot, 
   Target, 
   Trophy, 
-  Settings, 
   History, 
   GraduationCap, 
   Microscope,
@@ -21,7 +20,8 @@ import {
   MoreHorizontal,
   User,
   BookOpen,
-  FileSearch
+  FileSearch,
+  Facebook
 } from 'lucide-react';
 import { usePathname } from 'next/navigation';
 import { Mascot } from './Mascot';
@@ -48,8 +48,8 @@ const navItems = [
   { id: 'history', label: 'Match History', icon: History, href: '/history' },
   { id: 'leaderboard', label: 'Rankings', icon: Trophy, href: '/leaderboard' },
   { id: 'profile', label: 'My Profile', icon: User, href: '/profile' },
-  { id: 'settings', label: 'App Settings', icon: Settings, href: '/settings' },
   { id: 'help', label: 'Help Center', icon: Book, href: '/help' },
+  { id: 'facebook', label: 'Facebook', icon: Facebook, href: 'https://www.facebook.com/profile.php?id=61585450256243', external: true },
 ];
 
 export function Sidebar({ activeView, isOpen, onClose, userProfile, onLogout, onLoginClick }: SidebarProps) {
@@ -90,23 +90,36 @@ export function Sidebar({ activeView, isOpen, onClose, userProfile, onLogout, on
           {navItems.map((item) => {
             const isActive = activeView === item.id;
             return (
-              <Link
-                key={item.id}
-                href={item.href}
-                className={`
-                  flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-200
-                  ${isActive 
-                    ? 'bg-jungle-green-500/10 text-jungle-green-300 border border-jungle-green-500/20 shadow-[0_0_20px_theme(colors.jungle-green.500/10)]' 
-                    : 'text-zinc-400 hover:bg-white/5 hover:text-white'
-                  }
-                `}
-              >
-                <item.icon size={22} className={isActive ? 'animate-pulse' : ''} />
-                <span className="font-bold text-base">{item.label}</span>
-                {isActive && (
-                  <div className="ml-auto w-1.5 h-1.5 rounded-full bg-jungle-green-400 shadow-[0_0_10px_theme(colors.jungle-green.500)]" />
-                )}
-              </Link>
+              item.external ? (
+                <a
+                  key={item.id}
+                  href={item.href}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-200 text-zinc-400 hover:bg-white/5 hover:text-white"
+                >
+                  <item.icon size={22} />
+                  <span className="font-bold text-base">{item.label}</span>
+                </a>
+              ) : (
+                <Link
+                  key={item.id}
+                  href={item.href}
+                  className={`
+                    flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-200
+                    ${isActive 
+                      ? 'bg-jungle-green-500/10 text-jungle-green-300 border border-jungle-green-500/20 shadow-[0_0_20px_theme(colors.jungle-green.500/10)]' 
+                      : 'text-zinc-400 hover:bg-white/5 hover:text-white'
+                    }
+                  `}
+                >
+                  <item.icon size={22} className={isActive ? 'animate-pulse' : ''} />
+                  <span className="font-bold text-base">{item.label}</span>
+                  {isActive && (
+                    <div className="ml-auto w-1.5 h-1.5 rounded-full bg-jungle-green-400 shadow-[0_0_10px_theme(colors.jungle-green.500)]" />
+                  )}
+                </Link>
+              )
             );
           })}
         </nav>

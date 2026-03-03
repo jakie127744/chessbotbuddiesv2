@@ -130,6 +130,7 @@ export function Leaderboard() {
                     <MetricButton metric="lessons" label="Lessons" icon={BookOpen} />
                     <MetricButton metric="puzzles" label="Puzzles" icon={Zap} />
                     <MetricButton metric="endgames" label="Endgames" icon={Shield} />
+                    <MetricButton metric="openings" label="Openings" icon={BookOpen} />
                 </div>
 
                 {/* Search */}
@@ -166,6 +167,7 @@ export function Leaderboard() {
                              {activeMetric === 'lessons' && 'Lessons'}
                              {activeMetric === 'puzzles' && 'Puzzles'}
                              {activeMetric === 'endgames' && 'Endgames'}
+                             {activeMetric === 'openings' && 'Openings'}
                         </div>
                     </div>
 
@@ -213,6 +215,7 @@ export function Leaderboard() {
                                         {activeMetric === 'lessons' ? `${entry.lessonsCompleted || 0} Done` : ''}
                                         {activeMetric === 'puzzles' ? `${entry.puzzlesSolved || 0} Solved` : ''}
                                         {activeMetric === 'endgames' ? `${entry.endgamesCompleted || 0} Done` : ''}
+                                        {activeMetric === 'openings' ? `${entry.openingsCompleted || 0} Done` : ''}
                                     </span>
                                 </div>
                             </div>
@@ -236,6 +239,7 @@ export function Leaderboard() {
                                     {activeMetric === 'lessons' && (entry.lessonsCompleted || 0)}
                                     {activeMetric === 'puzzles' && (entry.puzzlesSolved || 0)}
                                     {activeMetric === 'endgames' && (entry.endgamesCompleted || 0)}
+                                    {activeMetric === 'openings' && (entry.openingsCompleted || 0)}
                                 </span>
                             </div>
                         </div>

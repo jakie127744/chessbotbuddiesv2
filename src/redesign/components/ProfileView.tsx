@@ -18,7 +18,6 @@ import {
   Zap, 
   Rocket, 
   TrendingUp, 
-  TrendingDown, 
   Share2, 
   Edit,
   Plus,
@@ -47,6 +46,8 @@ export function ProfileView({ initialTab = 'performance' }: ProfileViewProps) {
   const [activeTab, setActiveTab] = useState<'profile' | 'appearance' | 'performance'>(initialTab);
   const [leaderboard, setLeaderboard] = useState<LeaderboardEntry[]>([]);
   const [isLoadingLeaderboard, setIsLoadingLeaderboard] = useState(true);
+  const [userRank, setUserRank] = useState<number | null>(null);
+  const [showBadgeModal, setShowBadgeModal] = useState(false);
   
   const { colorScheme, setColorScheme } = useBoardColorScheme();
   const { pieceStyle, setPieceStyle } = usePieceStyle();
@@ -76,6 +77,8 @@ export function ProfileView({ initialTab = 'performance' }: ProfileViewProps) {
         try {
             const data = await fetchGlobalLeaderboard(profile, stats, profile.rating || 800, xp, 'rating');
             setLeaderboard(data.slice(0, 5));
+            const self = data.find((entry) => entry.isUser);
+            if (self) setUserRank(self.rank);
         } catch (e) {
             console.error('Failed to load compact leaderboard:', e);
         } finally {
@@ -170,14 +173,14 @@ export function ProfileView({ initialTab = 'performance' }: ProfileViewProps) {
                       </span>
                       <span className="w-1 h-1 bg-zinc-800 rounded-full"></span>
                       <span className="flex items-center gap-2">
-                        <Globe size={16} /> Global Rank: #{profile.rank || 1204}
+                        <Globe size={16} /> Global Rank: #{userRank ?? profile.rank ?? '–'}
                       </span>
                     </div>
                     
                     <div className="flex justify-center sm:justify-start gap-6 mt-4">
                       <div className="flex items-center gap-2 text-zinc-400">
                         <Globe size={18} className="text-jungle-green-400" />
-                        <span className="text-xs font-bold uppercase tracking-tight">Global Rank: #{profile.rank || 1204}</span>
+                        <span className="text-xs font-bold uppercase tracking-tight">Global Rank: #{userRank ?? profile.rank ?? '–'}</span>
                       </div>
                       <div className="flex items-center gap-2 text-zinc-400">
                         <Trophy size={18} className="text-yellow-500" />
@@ -204,22 +207,28 @@ export function ProfileView({ initialTab = 'performance' }: ProfileViewProps) {
               {/* Rating Stats Grid */}
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 <RatingCard 
-                  label="Rapid" 
-                  value={profile.rapidRating || profile.rating || 1500} 
-                  trend={15} 
+                  label="Games Played" 
+                  value={stats.totalGames}
                   icon={<Timer className="text-jungle-green-400" />} 
+                  caption="All-time"
                 />
                 <RatingCard 
-                  label="Blitz" 
-                  value={profile.blitzRating || 2100} 
-                  trend={-10} 
-                  icon={<Zap className="text-yellow-500" />} 
-                />
-                <RatingCard 
-                  label="Bullet" 
-                  value={profile.bulletRating || 1920} 
-                  trend={5} 
+                  label="Openings" 
+                  value={stats.openingsCompleted}
                   icon={<Rocket className="text-orange-500" />} 
+                  caption="Completed"
+                />
+                <RatingCard 
+                  label="Endgames" 
+                  value={stats.endgamesCompleted}
+                  icon={<Shield className="text-yellow-500" />} 
+                  caption="Completed"
+                />
+                <RatingCard 
+                  label="Puzzles" 
+                  value={stats.puzzlesSolved}
+                  icon={<Zap className="text-amber-400" />} 
+                  caption="Solved"
                 />
               </div>
 
@@ -412,7 +421,10 @@ export function ProfileView({ initialTab = 'performance' }: ProfileViewProps) {
               </div>
               <h4 className="font-black text-xl mb-2 tracking-tight">Daily Milestone!</h4>
               <p className="text-white/60 text-xs font-bold leading-relaxed mb-6 uppercase tracking-widest">You've solved {stats.puzzlesSolved} puzzles. Top 5% of all active players this week.</p>
-              <button className="w-full bg-white/10 hover:bg-white/20 transition-all py-3 rounded-2xl text-[10px] font-black uppercase tracking-[0.2em] backdrop-blur-lg border border-white/10">
+              <button 
+                className="w-full bg-white/10 hover:bg-white/20 transition-all py-3 rounded-2xl text-[10px] font-black uppercase tracking-[0.2em] backdrop-blur-lg border border-white/10"
+                onClick={() => setShowBadgeModal(true)}
+              >
                 Claim Badge
               </button>
             </div>
@@ -422,12 +434,39 @@ export function ProfileView({ initialTab = 'performance' }: ProfileViewProps) {
           </div>
         </div>
       </div>
+
+      {showBadgeModal && (
+        <div className="fixed inset-0 z-[120] flex items-center justify-center bg-black/70 backdrop-blur-sm p-4">
+          <div className="bg-redesign-glass-bg border border-redesign-glass-border rounded-3xl shadow-2xl max-w-lg w-full p-6 space-y-4">
+            <div className="flex items-center justify-between">
+              <h4 className="text-lg font-black text-white flex items-center gap-2">
+                <Medal className="text-yellow-500" />
+                Your Badges
+              </h4>
+              <button className="text-zinc-500 hover:text-white" onClick={() => setShowBadgeModal(false)}>
+                <X size={18} />
+              </button>
+            </div>
+            <p className="text-sm text-zinc-400 font-bold">Badges unlock automatically when you hit milestones. Here are your unlocked badges:</p>
+            <div className="max-h-64 overflow-y-auto space-y-2 custom-scrollbar">
+              {Object.entries(achievements || {}).filter(([, a]: any) => a.unlocked).map(([id, progress]) => (
+                <div key={id} className="flex items-center justify-between bg-white/5 border border-white/10 rounded-2xl px-4 py-3">
+                  <span className="text-white font-bold text-sm truncate">{id}</span>
+                  <span className="text-emerald-400 text-[10px] font-black uppercase tracking-widest">Claimed</span>
+                </div>
+              ))}
+              {Object.values(achievements || {}).filter((a: any) => a.unlocked).length === 0 && (
+                <p className="text-zinc-500 text-sm font-bold text-center">No badges yet. Keep playing!</p>
+              )}
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
 
-function RatingCard({ label, value, trend, icon }: { label: string, value: number, trend: number, icon: React.ReactNode }) {
-  const isPositive = trend > 0;
+function RatingCard({ label, value, icon, caption }: { label: string, value: number, icon: React.ReactNode, caption?: string }) {
   return (
     <div className="flex flex-col gap-3 rounded-3xl p-6 bg-redesign-glass-bg border border-redesign-glass-border shadow-xl hover:border-jungle-green-500/30 transition-all group">
       <div className="flex justify-between items-center">
@@ -437,9 +476,8 @@ function RatingCard({ label, value, trend, icon }: { label: string, value: numbe
         </div>
       </div>
       <p className="text-white text-4xl font-black tracking-tight">{value}</p>
-      <div className={`flex items-center gap-1 text-[10px] font-black uppercase tracking-tighter ${isPositive ? 'text-emerald-400' : 'text-red-400'}`}>
-        {isPositive ? <TrendingUp size={14} /> : <TrendingDown size={14} />}
-        {isPositive ? '+' : ''}{trend} <span className="text-zinc-600 ml-1">this week</span>
+      <div className="flex items-center gap-1 text-[10px] font-black uppercase tracking-tighter text-zinc-500">
+        {caption || 'All-time'}
       </div>
     </div>
   );

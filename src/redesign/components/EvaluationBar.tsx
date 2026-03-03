@@ -1,43 +1,76 @@
 'use client';
 
-import React from 'react';
+import { useMemo } from 'react';
+import { StableEval } from '@/lib/analysis-utils';
 
 interface EvaluationBarProps {
-  evaluation: number;
-  isMate: boolean;
-  orientation: 'white' | 'black';
+  evaluation: number; // Centipawns. Positive = White advantage.
+  orientation?: 'white' | 'black';
+  isMate?: boolean; // If true, evaluation is moves to mate (positive = white mates)
+  isTablebase?: boolean; // If true, this is a tablebase position
+  tablebaseText?: string; // Display text for tablebase (e.g., "TB Win", "TB+15")
+  stableEval?: StableEval; // New: Stable Eval Object
 }
 
-export function EvaluationBar({ evaluation, isMate, orientation }: EvaluationBarProps) {
-  // Clamp evaluation for display (-5 to +5 is usually the main visible range)
-  const clampedEval = Math.max(-5, Math.min(5, evaluation));
-  
-  // Calculate percentage (0-100) where 50 is even
-  // If orientation is black, flip the sense
-  const basePercent = 50 - (clampedEval * 10);
-  const percent = orientation === 'black' ? 100 - basePercent : basePercent;
+export function EvaluationBar({
+  evaluation,
+  orientation = 'white',
+  isMate = false,
+  isTablebase = false,
+  tablebaseText,
+  stableEval
+}: EvaluationBarProps) {
+
+  const overBarHeight = useMemo(() => {
+    if (stableEval) {
+      return 50 - (stableEval.uiValue * 50);
+    }
+
+    if (Math.abs(evaluation) > 5000) {
+      return evaluation > 0 ? 0 : 100;
+    }
+
+    const sigmoid = Math.tanh(evaluation / 400);
+    return 50 - (sigmoid * 50);
+  }, [evaluation, stableEval]);
+
+  const scoreText = useMemo(() => {
+    if (isTablebase && tablebaseText) return tablebaseText;
+
+    if (isMate || Math.abs(evaluation) > 8000) {
+      const movesToMate = Math.ceil((10000 - Math.abs(evaluation)) / 10);
+      return `M${movesToMate}`;
+    }
+
+    const pawns = evaluation / 100;
+    if (Math.abs(pawns) < 0.05) return '0.0';
+    return `${pawns > 0 ? '+' : ''}${pawns.toFixed(1)}`;
+  }, [evaluation, isTablebase, tablebaseText, isMate]);
+
+  const textColor = overBarHeight > 50 ? '#fff' : '#000';
+  const textPositionStyle = overBarHeight > 50 ? { top: '5px' } : { bottom: '5px' };
+  const displayFlipped = orientation === 'black';
 
   return (
-    <div className="w-full h-full bg-zinc-900 relative overflow-hidden flex flex-col">
-      {/* Black's Portion */}
-      <div 
-        className="bg-black transition-all duration-700 ease-out"
-        style={{ height: `${percent}%` }}
-      />
-      
-      {/* White's Portion */}
-      <div 
-        className="flex-1 bg-white transition-all duration-700 ease-out shadow-[0_0_20px_rgba(255,255,255,0.2)]"
+    <div
+      className="relative w-full h-full min-w-[12px] rounded-md overflow-hidden"
+      style={{ backgroundColor: displayFlipped ? '#0c0c0c' : '#fff' }}
+    >
+      <div
+        className="w-full transition-[height] duration-300 ease-out"
+        style={{
+          backgroundColor: displayFlipped ? '#fff' : '#0c0c0c',
+          height: displayFlipped
+            ? `calc(100% - ${overBarHeight}%)`
+            : `${overBarHeight}%`
+        }}
       />
 
-      {/* Zero Line */}
-      <div className="absolute top-1/2 left-0 w-full h-px bg-redesign-cyan/30 z-10" />
-      
-      {/* Evaluation Label */}
-      <div className={`absolute left-0 w-full text-center z-20 pointer-events-none transition-all duration-700 ${percent > 50 ? 'bottom-2' : 'top-2'}`}>
-         <span className={`text-xs font-black uppercase tracking-tighter ${percent > 50 ? 'text-zinc-500' : 'text-zinc-400'}`}>
-            {isMate ? 'Mate' : evaluation > 0 ? `+${evaluation.toFixed(1)}` : evaluation.toFixed(1)}
-         </span>
+      <div
+        className="absolute left-0 right-0 text-[10px] font-black text-center select-none"
+        style={{ color: textColor, ...textPositionStyle }}
+      >
+        {scoreText}
       </div>
     </div>
   );

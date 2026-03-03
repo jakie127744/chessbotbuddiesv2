@@ -18,12 +18,28 @@ export interface LeaderboardEntry {
     lessonsCompleted?: number;
     xp?: number;
     endgamesCompleted?: number;
+    openingsCompleted?: number;
 }
 
 import { supabase } from "./supabaseClient";
 import { LESSON_TRACKS } from "./lesson-data";
 
-export type LeaderboardMetric = 'rating' | 'xp' | 'lessons' | 'puzzles' | 'endgames';
+export type LeaderboardMetric = 'rating' | 'xp' | 'lessons' | 'puzzles' | 'endgames' | 'openings';
+
+const ENDGAME_LESSON_IDS = new Set<string>();
+const OPENING_LESSON_IDS = new Set<string>();
+
+Object.values(LESSON_TRACKS).forEach(track => {
+    track.forEach(lesson => {
+        if (lesson.type === 'endgame') ENDGAME_LESSON_IDS.add(lesson.id);
+        if (lesson.type === 'opening') OPENING_LESSON_IDS.add(lesson.id);
+    });
+});
+
+const countCompletions = (completedIds: string[] | undefined, targets: Set<string>): number => {
+    if (!completedIds || !Array.isArray(completedIds)) return 0;
+    return completedIds.filter((id) => targets.has(id)).length;
+};
 
 /**
  * Get Global Leaderboard with Real Users (Supabase)
@@ -48,17 +64,14 @@ export async function fetchGlobalLeaderboard(
 
         if (profiles && !error) {
             profiles.forEach((p: any) => {
-                // Calculate Endgames
-                let endgameCount = 0;
-                if (p.completed_lessons_ids && Array.isArray(p.completed_lessons_ids)) {
-                     const endgameIds = new Set<string>();
-                     Object.values(LESSON_TRACKS).forEach(track => {
-                         track.forEach(lesson => {
-                             if (lesson.type === 'endgame') endgameIds.add(lesson.id);
-                         });
-                     });
-                     endgameCount = p.completed_lessons_ids.filter((id: string) => endgameIds.has(id)).length;
-                }
+                const completedLessons = Array.isArray(p.completed_lessons_ids)
+                    ? p.completed_lessons_ids
+                    : Array.isArray(p.completed_lessons)
+                        ? p.completed_lessons
+                        : [];
+
+                const endgameCount = countCompletions(completedLessons, ENDGAME_LESSON_IDS);
+                const openingCount = countCompletions(completedLessons, OPENING_LESSON_IDS);
 
                 const entry: LeaderboardEntry = {
                     rank: 0,
@@ -74,28 +87,23 @@ export async function fetchGlobalLeaderboard(
                     puzzlesSolved: p.puzzles_solved || 0,
                     lessonsCompleted: p.lessons_completed || 0,
                     xp: p.xp || 0,
-                    endgamesCompleted: endgameCount
+                    endgamesCompleted: endgameCount,
+                    openingsCompleted: openingCount
                 };
 
                 // Merge Local Stats if it's the User
                 if (p.id === user.id) {
-                     let userEndgameCount = 0;
-                     if (user.completedLessons) {
-                        const endgameIds = new Set<string>();
-                        Object.values(LESSON_TRACKS).forEach(track => {
-                             track.forEach(lesson => {
-                                 if (lesson.type === 'endgame') endgameIds.add(lesson.id);
-                             });
-                        });
-                        userEndgameCount = user.completedLessons.filter((id: string) => endgameIds.has(id)).length;
-                     }
+                     const userCompletedLessons = user.completedLessons || [];
+                     const userEndgameCount = countCompletions(userCompletedLessons, ENDGAME_LESSON_IDS);
+                     const userOpeningCount = countCompletions(userCompletedLessons, OPENING_LESSON_IDS);
 
                      entry.xp = Math.max(entry.xp || 0, xp || 0);
                      entry.gamesPlayed = Math.max(entry.gamesPlayed || 0, stats.totalGames || 0);
                      entry.wins = Math.max(entry.wins || 0, stats.wins || 0);
                      entry.puzzlesSolved = Math.max(entry.puzzlesSolved || 0, stats.puzzlesSolved || 0);
                      entry.lessonsCompleted = Math.max(entry.lessonsCompleted || 0, stats.lessonsCompleted || 0);
-                     entry.endgamesCompleted = Math.max(entry.endgamesCompleted || 0, userEndgameCount);
+                     entry.endgamesCompleted = Math.max(entry.endgamesCompleted || 0, stats.endgamesCompleted || 0, userEndgameCount);
+                     entry.openingsCompleted = Math.max(entry.openingsCompleted || 0, stats.openingsCompleted || 0, userOpeningCount);
                      
                      if ((stats.totalGames || 0) > (p.games_played || 0)) {
                          entry.elo = currentElo;
@@ -109,18 +117,9 @@ export async function fetchGlobalLeaderboard(
 
     // 2. Add Current User (if not already merged from Supabase)
     if (!data.some(d => d.isUser)) {
-        // Calculate User Endgames
-        let userEndgameCount = 0;
-        
-        if (user.completedLessons) {
-             const endgameIds = new Set<string>();
-             Object.values(LESSON_TRACKS).forEach(track => {
-                 track.forEach(lesson => {
-                     if (lesson.type === 'endgame') endgameIds.add(lesson.id);
-                 });
-             });
-             userEndgameCount = user.completedLessons.filter((id) => endgameIds.has(id)).length;
-        }
+        const userCompletedLessons = user.completedLessons || [];
+        const userEndgameCount = countCompletions(userCompletedLessons, ENDGAME_LESSON_IDS);
+        const userOpeningCount = countCompletions(userCompletedLessons, OPENING_LESSON_IDS);
 
         const userEntry: LeaderboardEntry = {
             rank: 0,
@@ -136,7 +135,8 @@ export async function fetchGlobalLeaderboard(
             puzzlesSolved: stats.puzzlesSolved,
             lessonsCompleted: stats.lessonsCompleted,
             xp: xp || 0,
-            endgamesCompleted: userEndgameCount
+            endgamesCompleted: Math.max(stats.endgamesCompleted, userEndgameCount),
+            openingsCompleted: Math.max(stats.openingsCompleted, userOpeningCount)
         };
 
         data.push(userEntry);
@@ -149,6 +149,7 @@ export async function fetchGlobalLeaderboard(
             case 'lessons': return (b.lessonsCompleted || 0) - (a.lessonsCompleted || 0);
             case 'puzzles': return (b.puzzlesSolved || 0) - (a.puzzlesSolved || 0);
             case 'endgames': return (b.endgamesCompleted || 0) - (a.endgamesCompleted || 0);
+            case 'openings': return (b.openingsCompleted || 0) - (a.openingsCompleted || 0);
             case 'rating': default: return b.elo - a.elo;
         }
     });
